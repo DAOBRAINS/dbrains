@@ -1,12 +1,14 @@
 "use client";
-
+import { Rainbowkit } from "./components/rainbowkit";
 import NavBar from "./components/navbar";
 
 export default function Home() {
   return (
-    <main>
+    <Rainbowkit>
       <NavBar />
-      <h1>DBrains</h1>
-    </main>
+      <main>
+        <h1 className="mt-5 text-2xl p-5">DBrains Home Page</h1>
+      </main>
+    </Rainbowkit>
   );
 }

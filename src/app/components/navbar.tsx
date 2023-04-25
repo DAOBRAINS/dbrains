@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 var dbrainslogo = "./public/brainOfBrains.jpg";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const navigation = [
   { name: "Dashboard", href: "#", current: true },
@@ -144,6 +145,9 @@ export default function NavBar() {
                     </Menu.Items>
                   </Transition>
                 </Menu>
+              </div>
+              <div className="p-5">
+                <ConnectButton />
               </div>
             </div>
           </div>
