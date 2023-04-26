@@ -11,8 +11,8 @@ const { chains, provider } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "GoodHive App",
-  projectId: "42",
+  appName: "DBrains",
+  projectId: "c2faee134926d6993802a83edd63d750",
   chains,
 });
 

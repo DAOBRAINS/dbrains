@@ -5,12 +5,13 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 var dbrainslogo = "./public/brainOfBrains.jpg";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import Link from "next/link";
 
 const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Team", href: "#", current: false },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
+  { name: "Projects Dashboard", href: "/projects-dashboard", current: true },
+  { name: "DBrains DAO", href: "/dbrains-dao", current: false },
+  /* { name: "Projects", href: "#", current: false },
+  { name: "Calendar", href: "#", current: false }, */
 ];
 
 function classNames(...classes: string[]) {
@@ -37,20 +38,25 @@ export default function NavBar() {
               </div>
               <div className="flex flex-1 items-center justify-center  sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                  <Image
-                    className="block h-8 w-auto lg:hidden"
-                    src="/DBrains.jpg"
-                    width={10}
-                    height={10}
-                    alt="DBrains"
-                  />
-                  <Image
-                    className="hidden h-8 w-auto lg:block"
-                    src="/DBrains.jpg"
-                    width={10}
-                    height={10}
-                    alt="DBrains"
-                  />
+                  <Link href="/home">
+                    <Image
+                      className="block h-8 w-auto lg:hidden"
+                      src="/DBrains.jpg"
+                      width={10}
+                      height={10}
+                      alt="DBrains"
+                    />
+                  </Link>
+                  <Link href="/">
+                    {" "}
+                    <Image
+                      className="hidden h-8 w-auto lg:block"
+                      src="/DBrains.jpg"
+                      width={10}
+                      height={10}
+                      alt="DBrains"
+                    />
+                  </Link>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
@@ -146,7 +152,7 @@ export default function NavBar() {
                   </Transition>
                 </Menu>
               </div>
-              <div className="p-5">
+              <div className="hidden sm:p-5 sm:block">
                 <ConnectButton />
               </div>
             </div>
