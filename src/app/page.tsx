@@ -1,12 +1,16 @@
-"use client";
 import { Rainbowkit } from "./components/rainbowkit";
 import NavBar from "./components/navbar";
 import DiscordInvite from "react-discord-invite";
 
+export const metadata = {
+  title: "DBrains",
+  description: "the fully collaborative freelancing plateforme",
+};
+
 export default function Home() {
   return (
-    <Rainbowkit>
-      <NavBar />
+    <div>
+      {" "}
       <main>
         <h1 className="mt-5 text-2xl p-5">DBrains Home Page</h1>
         <p className="text-lg p-5">
@@ -25,10 +29,7 @@ export default function Home() {
           collaborative work, ultimately scaling the federation of collective
           intelligence and community governance to large communities.
         </p>
-        <div className="p-5">
-          <DiscordInvite guild="" />
-        </div>
       </main>
-    </Rainbowkit>
+    </div>
   );
 }

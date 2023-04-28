@@ -1,4 +1,6 @@
 import { Metadata } from "next";
+import { useAccount } from "wagmi";
+import { useIsMounted } from "../hooks/useIsMounted";
 
 export const metadata: Metadata = {
   title: "DBrains DAO | DBrains",
