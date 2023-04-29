@@ -17,7 +17,6 @@ import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { mainnet, polygon, gnosis } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
-import NavBar from "./components/navbar";
 import { AragonSDKWrapper } from "./context/AragonSDK";
 import { useIsMounted } from "./hooks/useIsMounted";
 import { AragonProvider } from "@daobox/use-aragon";
@@ -56,10 +55,11 @@ export default function RootLayout({
       <body>
         <WagmiConfig client={wagmiClient}>
           <RainbowKitProvider chains={chains}>
-            <AragonProvider>
-              {" "}
-              {isMounted && <AppShell>{children}</AppShell>}
-            </AragonProvider>
+            <AragonSDKWrapper>
+              <AragonProvider>
+                {isMounted && <AppShell>{children}</AppShell>}
+              </AragonProvider>
+            </AragonSDKWrapper>
           </RainbowKitProvider>
         </WagmiConfig>
       </body>
