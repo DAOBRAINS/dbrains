@@ -1,15 +1,5 @@
 "use client";
 
-/* import type { AppProps } from "next/app";
-import * as React from "react";
-
-
-import { AragonProvider } from "@daobox/use-aragon";
-import { chains, client } from "../config/wagmiConfig";
-import AppShell from "../components/layout/AppShell";
-import { Toaster } from "react-hot-toast";
-import { useIsMounted } from "hooks"; */
-
 import "./globals.css";
 import "@rainbow-me/rainbowkit/styles.css";
 
