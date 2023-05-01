@@ -8,12 +8,13 @@ import {
   TokenVotingClient,
   VotingMode,
 } from "@aragon/sdk-client";
-
 import { useAragonSDKContext } from "../context/AragonSDK";
+const { context } = useAragonSDKContext();
+//const  context  = useContext(AragonSDKContext);
 
 export async function createDAO() {
   // Instantiate the general purpose client from the Aragon OSx SDK context.
-  const { context } = useAragonSDKContext();
+
   const client: Client = new Client(context);
 
   const daoMetadata: DaoMetadata = {
