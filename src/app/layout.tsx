@@ -5,7 +5,7 @@ import "@rainbow-me/rainbowkit/styles.css";
 
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
-import { mainnet, polygon, gnosis } from "wagmi/chains";
+import { mainnet, goerli, polygon, gnosis } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 import { AragonSDKWrapper } from "./context/AragonSDK";
 import { useIsMounted } from "./hooks/useIsMounted";
@@ -20,7 +20,7 @@ export default function RootLayout({
   const isMounted = useIsMounted();
 
   const { chains, provider } = configureChains(
-    [mainnet, polygon, gnosis],
+    [mainnet, goerli, polygon, gnosis],
     [publicProvider()]
   );
 
