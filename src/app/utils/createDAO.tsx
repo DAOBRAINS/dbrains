@@ -17,8 +17,8 @@ export async function createDAO() {
   const client: Client = new Client(context);
 
   const daoMetadata: DaoMetadata = {
-    name: "My DAO",
-    description: "This is a description",
+    name: "DaoProject",
+    description: "This project is about",
     avatar: "image-url",
     links: [
       {

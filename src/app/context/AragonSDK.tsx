@@ -8,7 +8,7 @@ const AragonSDKContext = createContext({});
 
 export function AragonSDKWrapper({ children }: any): JSX.Element {
   const [context, setContext] = useState<Context | undefined>(undefined);
-  const signer = useSigner().data || undefined;
+  const signer = (useSigner().data as any) || undefined;
 
   useEffect(() => {
     const aragonSDKContextParams: ContextParams = {
