@@ -9,9 +9,9 @@ import { createDAO } from "../utils/createDAO";
   description: "The Fully Collaborative Freelancing Plateforme",
 }; */
 
-/* const createProject = () => {
+const createProject = () => {
   createDAO();
-}; */
+};
 
 export default function ProjectsDashboard() {
   const projects = [
