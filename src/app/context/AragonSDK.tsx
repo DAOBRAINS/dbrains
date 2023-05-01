@@ -2,7 +2,6 @@ import { createContext, useEffect, useContext, useState } from "react";
 
 import { useSigner } from "wagmi";
 import { Context, ContextParams } from "@aragon/sdk-client";
-import { Signer } from "ethers";
 
 const AragonSDKContext = createContext({});
 
@@ -18,8 +17,8 @@ export function AragonSDKWrapper({ children }: any): JSX.Element {
       web3Providers: ["https://rpc.ankr.com/eth_goerli"], // feel free to use the provider of your choosing: Alchemy, Infura, etc.
       ipfsNodes: [
         {
-          url: "https://testing-ipfs-0.aragon.network/api/v0",
-          headers: { "X-API-KEY": process.env.REACT_APP_IPFS_KEY || "" }, // make sure you have the key for your IPFS node within your .env file
+          url: "https://ipfs.infura.io:5001", //" https://api.nft.storage/pins", //"https://testing-ipfs-0.aragon.network/api/v0",
+          headers: { "X-API-KEY": process.env.INFURA_IPFS_KEY || "" }, // make sure you have the key for your IPFS node within your .env file
         },
       ],
       graphqlNodes: [
