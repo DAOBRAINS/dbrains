@@ -1,7 +1,3 @@
-import { Rainbowkit } from "./components/rainbowkit";
-import NavBar from "./components/navbar";
-import DiscordInvite from "react-discord-invite";
-
 export const metadata = {
   title: "DBrains",
   description: "the fully collaborative freelancing plateforme",
