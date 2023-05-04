@@ -11,20 +11,32 @@ import {
 } from "@aragon/sdk-client";
 import { useAragonSDKContext } from "../context/AragonSDK";
 import { NFTStorage, File, Blob, BlockstoreI } from "nft.storage";
+import { useAccount } from "wagmi";
 
-export default function CreateProject() {
+export default function CreateProjectSDK() {
   const { context } = useAragonSDKContext();
+  //wagmi signer? Not used in Aragon SDK, why??
+  const { address, isConnecting, isDisconnected } = useAccount();
+  console.log(
+    `isConnecting = ${isConnecting}, isDisconnected = ${isDisconnected}, account address = ${address}`
+  );
 
   async function createDAO() {
     // Instantiate the general purpose client from the Aragon OSx SDK context.
-
     const client: Client = new Client(context);
-    const clientNFTSTORAGE = new NFTStorage({
-      token: process.env.NFTSTORAGE_IPFS_KEY as string,
+    //client Signer?
+    const aragonsigner = await client.web3.getSigner().getAddress();
+    console.log("client signer=", aragonsigner);
+    //NFTSTORAGE (IPFS) client
+    const NFTSTORAGEClient = new NFTStorage({
+      token: process.env.NEXT_PUBLIC_NFTSTORAGE_IPFS_KEY as string,
     });
+    //Factory address used
+    const factoryAddress = client.web3.getDaoFactoryAddress();
+    console.log(factoryAddress);
 
     const daoMetadata: DaoMetadata = {
-      name: "DaoProject",
+      name: "DaoProject2",
       description: "This project is about",
       avatar: "image-url",
       links: [
@@ -41,7 +53,7 @@ export default function CreateProject() {
       type: "application/json",
     });
 
-    const metadataUri = await clientNFTSTORAGE.storeBlob(blob);
+    const metadataUri = await NFTSTORAGEClient.storeBlob(blob);
     //const metadataUri = await client.methods.pinMetadata(daoMetadata);
 
     // You need at least one plugin in order to create a DAO. In this example, we'll use the TokenVoting plugin, but feel free to install whichever one best suites your needs. You can find resources on how to do this in the plugin sections.
@@ -55,8 +67,8 @@ export default function CreateProject() {
         votingMode: VotingMode.EARLY_EXECUTION, // default is STANDARD. other options: EARLY_EXECUTION, VOTE_REPLACEMENT
       },
       newToken: {
-        name: "Token", // the name of your token
-        symbol: "TOK", // the symbol for your token. shouldn't be more than 5 letters
+        name: "DBRAIN PROJECT1 Token", // the name of your token
+        symbol: "DBRP1", // the symbol for your token. shouldn't be more than 5 letters
         decimals: 18, // the number of decimals your token uses
         //minter: "0x...", // optional. if you don't define any, we'll use the standard OZ ERC20 contract. Otherwise, you can define your own token minter contract address.
         balances: [
@@ -75,7 +87,7 @@ export default function CreateProject() {
 
     const createDaoParams: CreateDaoParams = {
       metadataUri,
-      ensSubdomain: "my-org", // my-org.dao.eth
+      ensSubdomain: "dbrains-project1", // my-org.dao.eth
       plugins: [tokenVotingPluginToInstall], // plugin array cannot be empty or the transaction will fail. you need at least one governance mechanism to create your DAO.
     };
 
@@ -87,7 +99,7 @@ export default function CreateProject() {
 
     // Create the DAO.
     const steps = client.methods.createDao(createDaoParams);
-
+    console.log(steps);
     for await (const step of steps) {
       try {
         switch (step.key) {

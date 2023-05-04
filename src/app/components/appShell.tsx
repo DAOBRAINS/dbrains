@@ -7,11 +7,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       <div className="min-h-full">
         <Navbar />
         {children}
-        <div className="p-5">
+        {/* <div className="p-5">
           <a href="https://discord.gg/d6j4qNP6ph">
             <img src={"/discordJoinUs.svg"} />
           </a>
-        </div>
+        </div> */}
         {/* <div className="p-5">
           <DiscordInvite guild="" />
         </div> */}

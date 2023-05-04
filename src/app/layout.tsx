@@ -39,17 +39,16 @@ export default function RootLayout({
   interface Props {
     children: React.ReactNode;
   }
-
   return (
     <html lang="en">
       <body>
         <WagmiConfig client={wagmiClient}>
           <RainbowKitProvider chains={chains}>
-            <AragonSDKWrapper>
-              <AragonProvider>
-                {isMounted && <AppShell>{children}</AppShell>}
-              </AragonProvider>
-            </AragonSDKWrapper>
+            {/* <AragonSDKWrapper> */}
+            <AragonProvider>
+              {isMounted && <AppShell>{children}</AppShell>}
+            </AragonProvider>
+            {/* </AragonSDKWrapper> */}
           </RainbowKitProvider>
         </WagmiConfig>
       </body>

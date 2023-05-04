@@ -2,7 +2,7 @@
 
 import { CheckCircleIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { Metadata } from "next";
-import CreateProject from "../components/createProject";
+import CreateProject from "../components/createProjectDAOBox";
 
 /* export const metadata: Metadata = {
   title: "Projects Dashboard | DBrains",
