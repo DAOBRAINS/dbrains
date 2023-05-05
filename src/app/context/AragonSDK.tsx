@@ -1,22 +1,21 @@
+"using client";
+
 import { createContext, useEffect, useContext, useState } from "react";
 
 import { useSigner } from "wagmi";
 import { Context, ContextParams } from "@aragon/sdk-client";
 import { Wallet } from "ethers";
-import { getData } from "../utils/getData";
 
 const AragonSDKContext = createContext({});
-console.log(getData());
 
-export function AragonSDKWrapper({ children }: any): JSX.Element {
+export function AragonSDKWrapper({ children }: any) {
   const [context, setContext] = useState<Context | undefined>(undefined);
-  const signer = useSigner().data || undefined;
+  const signer = useSigner().data;
 
   useEffect(() => {
     const aragonSDKContextParams: ContextParams = {
       network: "goerli", // mainnet, mumbai, etc
-      signer: new Wallet(process.env.NEXT_PUBLIC_PRIVATE_KEY as string),
-      //new Wallet(process.env.PRIVATE_KEY as string),
+      signer, //: new Wallet(process.env.NEXT_PUBLIC_PRIVATE_KEY as string),
       daoFactoryAddress: "0x16B6c6674fEf5d29C9a49EA68A19944f5a8471D3", // the DAO Factory contract address from the Goerli network. You can find the daoFactoryAddress you need from the active_contracts file within the osx repository here: https://github.com/aragon/osx/blob/develop/active_contracts.json
       web3Providers: ["https://rpc.ankr.com/eth_goerli"], // feel free to use the provider of your choosing: Alchemy, Infura, etc.
       ipfsNodes: [
@@ -33,7 +32,7 @@ export function AragonSDKWrapper({ children }: any): JSX.Element {
         },
       ],
     };
-
+    console.log("signer in AragonSDK useEffect", signer);
     setContext(new Context(aragonSDKContextParams));
   }, [signer]);
 

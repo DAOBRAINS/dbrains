@@ -11,9 +11,16 @@ import {
 } from "@aragon/sdk-client";
 import { useAragonSDKContext } from "../context/AragonSDK";
 import { NFTStorage, File, Blob, BlockstoreI } from "nft.storage";
-import { useAccount } from "wagmi";
+import { useAccount, useProvider } from "wagmi";
+export interface Inputs {
+  projectName: string;
+  projectDesc: string;
+  ens: string;
+  projectType: string;
+  tokenType: string;
+}
 
-export default function CreateProjectSDK() {
+export default function CreateProject(inputs: Inputs) {
   const { context } = useAragonSDKContext();
   //wagmi signer? Not used in Aragon SDK, why??
   const { address, isConnecting, isDisconnected } = useAccount();
@@ -21,7 +28,7 @@ export default function CreateProjectSDK() {
     `isConnecting = ${isConnecting}, isDisconnected = ${isDisconnected}, account address = ${address}`
   );
 
-  async function createDAO() {
+  async function createDAO({ projectName, projectDesc, ens }: Inputs) {
     // Instantiate the general purpose client from the Aragon OSx SDK context.
     const client: Client = new Client(context);
     //client Signer?
@@ -36,12 +43,12 @@ export default function CreateProjectSDK() {
     console.log(factoryAddress);
 
     const daoMetadata: DaoMetadata = {
-      name: "DaoProject2",
-      description: "This project is about",
+      name: projectName,
+      description: projectDesc,
       avatar: "image-url",
       links: [
         {
-          name: "Web site",
+          name: ens + "dao.test",
           url: "https://...",
         },
       ],
@@ -116,8 +123,8 @@ export default function CreateProjectSDK() {
     }
   }
 
-  const createProject = async () => {
-    await createDAO();
+  const createProject = async (inputs: Inputs) => {
+    await createDAO(inputs);
   };
 
   return (
@@ -125,7 +132,7 @@ export default function CreateProjectSDK() {
       type="button"
       className="inline-flex items-center gap-x-2 rounded-md bg-white px-3.5 py-2.5 text-2xl text-gray-950 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
       onClick={() => {
-        createProject();
+        createProject(inputs);
       }}
     >
       {" "}

@@ -1,8 +1,9 @@
 "use client";
 
-import { CheckCircleIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { Metadata } from "next";
-import CreateProject from "../components/createProjectDAOBox";
+import CreateDaoBox from "../components/createDaoBox";
+import CreateProject from "../components/createProjectSDK";
+import ProjectModal from "../components/projectModal";
 
 /* export const metadata: Metadata = {
   title: "Projects Dashboard | DBrains",
@@ -24,7 +25,8 @@ export default function ProjectsDashboard() {
   ];
   return (
     <main className="mx-5 my-5">
-      <CreateProject />
+      <CreateDaoBox />
+      <ProjectModal />
 
       <h1 className="my-5 text-2xl">Join a Project:</h1>
 
