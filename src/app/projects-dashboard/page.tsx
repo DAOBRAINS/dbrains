@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import CreateDaoBox from "../components/createDaoBox";
 import CreateProject from "../components/createProjectSDK";
 import ProjectModal from "../components/projectModal";
+import Test from "../components/test";
 
 /* export const metadata: Metadata = {
   title: "Projects Dashboard | DBrains",
@@ -25,7 +26,8 @@ export default function ProjectsDashboard() {
   ];
   return (
     <main className="mx-5 my-5">
-      <CreateDaoBox />
+      {/*  <Test />
+      <CreateDaoBox /> */}
       <ProjectModal />
 
       <h1 className="my-5 text-2xl">Join a Project:</h1>

@@ -5,7 +5,7 @@ import "@rainbow-me/rainbowkit/styles.css";
 
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
-import { mainnet, goerli, polygon, gnosis } from "wagmi/chains";
+import { mainnet, polygonMumbai, goerli, polygon, gnosis } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import { AragonSDKWrapper } from "./context/AragonSDK";
@@ -19,12 +19,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const isMounted = useIsMounted();
-  console.log(process.env.NEXT_PUBLIC_ALCHEMY_GOERLI_KEY);
+
   const { chains, provider } = configureChains(
-    [mainnet, goerli, polygon, gnosis],
+    [mainnet, polygonMumbai, goerli, polygon, gnosis],
     [
       alchemyProvider({
-        apiKey: process.env.NEXT_PUBLIC_ALCHEMY_GOERLI_KEY || "",
+        apiKey: process.env.NEXT_PUBLIC_ALCHEMY_MUMBAI_KEY || "",
         priority: 0,
       }),
       publicProvider({ priority: 1 }),
@@ -53,11 +53,9 @@ export default function RootLayout({
         <WagmiConfig client={wagmiClient}>
           <RainbowKitProvider chains={chains}>
             {isMounted && (
-              <AragonSDKWrapper>
-                <AragonProvider>
-                  <AppShell>{children}</AppShell>
-                </AragonProvider>
-              </AragonSDKWrapper>
+              <AragonProvider>
+                <AppShell>{children}</AppShell>
+              </AragonProvider>
             )}
           </RainbowKitProvider>
         </WagmiConfig>

@@ -1,20 +1,23 @@
 "use client";
 
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import ProjectModalInputs from "./projectModalInputs";
-/* import useAuth from "../../hooks/useAuth"; */
-/* import { AuthentificationContext } from "../context/AuthContext";
-import { Alert, CircularProgress } from "@mui/material"; */
-import CreateProject, { Inputs } from "./createProjectSDK";
+import { Inputs } from "./createProjectSDK";
+import { useAragonSDKContext } from "../context/AragonSDK";
+import { useAccount } from "wagmi";
+import { DaoMetadata, VotingMode } from "@aragon/sdk-client";
+import { encodeTokenVotingPlugin, useNewDao } from "@daobox/use-aragon";
+import Link from "next/link";
+import { Dialog } from "@mui/material";
 
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 1000,
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
@@ -22,14 +25,10 @@ const style = {
 };
 
 export default function ProjectModal() {
-  /* const { loading, data, error, setAuthState } = useContext(
-    AuthentificationContext
-  ); */
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  /* const { signin } = useAuth();
-   */
+
   const handleChangeInputs = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
@@ -57,17 +56,52 @@ export default function ProjectModal() {
     setDisabled(true);
   }, [inputs]);
 
-  const handleClick = () => {
-    CreateProject(inputs);
+  const createProject = () => {
+    mutate?.();
   };
+
+  const daoMetadata: DaoMetadata = {
+    name: inputs.projectName,
+    description: inputs.projectDesc,
+    links: [],
+  };
+
+  const plugin = encodeTokenVotingPlugin({
+    votingSettings: {
+      minDuration: 60 * 60 * 24 * 2, // seconds (minimum amount is 3600)
+      minParticipation: 0.25, // 25%
+      supportThreshold: 0.5, // 50%
+      minProposerVotingPower: BigInt("5000"), // default 0
+      votingMode: VotingMode.EARLY_EXECUTION, // default is STANDARD. other options: EARLY_EXECUTION, VOTE_REPLACEMENT
+    },
+    newToken: {
+      name: "DBRAIN PROJECT1 Token", // the name of your token
+      symbol: "DBRP1", // the symbol for your token. shouldn't be more than 5 letters
+      decimals: 18, // the number of decimals your token uses
+      balances: [
+        {
+          // Defines the initial balances of the new token
+          address: "0xE60930Dd528485BA57F4a17b02209877C2A9bFaC", //address!, // address of the account to receive the newly minted tokens
+          balance: BigInt(10), // amount of tokens that address should receive
+        },
+      ],
+    },
+    network: "mumbai",
+  });
+
+  const { mutate, creationStatus, data, error } = useNewDao({
+    daoMetadata,
+    ensSubdomain: inputs.ens,
+    plugins: [plugin],
+  });
 
   return (
     <div>
       <button
-        className="bg-blue-400 text-white border p-1 px-4 rounded mr-3"
+        className="bg-white text-black border p-1 px-4 rounded mr-3"
         onClick={handleOpen}
       >
-        Create Project
+        Create new Project
       </button>
       <Modal
         open={open}
@@ -76,7 +110,7 @@ export default function ProjectModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <div className="uppercase font-bold text-center pb-2 border-b mb-2">
+          <div className="uppercase font-bold  text-black text-center pb-2 border-b mb-2">
             Project Creation
             <div />
             <div className="=m-auto">
@@ -85,12 +119,34 @@ export default function ProjectModal() {
                 handleChangeInputs={handleChangeInputs}
               />
               <button
-                className="uppercase bg-red-600 w-full text-white p-3 rounded text-sm"
-                onClick={handleClick}
+                className="uppercase bg-red-600 w-full text-black p-3 rounded text-sm disabled:bg-gray-400"
+                onClick={createProject}
                 disabled={disabled}
               >
                 Create Project
               </button>
+              <h3 className="text-black p-3 justify-start">
+                Status: {creationStatus}
+              </h3>
+              <h3 className="text-black p-3 justify-start">
+                data:
+                <pre>
+                  {JSON.stringify(
+                    data,
+                    (_, v) => (typeof v === "bigint" ? v.toString() : v),
+                    2
+                  )}
+                </pre>
+              </h3>
+              {data && (
+                <Link
+                  href={`https://app.aragon.org/#/daos/goerli/${data.daoAddress}/dashboard`}
+                  className="text-black p-3 justify-start"
+                >
+                  Go to Dao
+                </Link>
+              )}
+              {error && <h3>Error: {error?.message}</h3>}
             </div>
           </div>
         </Box>

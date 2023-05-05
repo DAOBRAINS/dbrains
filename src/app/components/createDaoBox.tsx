@@ -70,7 +70,7 @@ export default function CreateDaoBox() {
         className="inline-flex items-center gap-x-2 rounded-md bg-white px-3.5 py-2.5 text-2xl text-gray-950 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         onClick={() => mutate?.()}
       >
-        "Create DAO"
+        "Create DAO using use-aragon"
       </button>
       <p>{creationStatus}</p>
       <p>{daoAddress}</p>

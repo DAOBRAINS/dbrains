@@ -137,7 +137,7 @@ export default function CreateProject(inputs: Inputs) {
     >
       {" "}
       <PlusIcon className="-mr-0.5 h-5 w-5  text-gray-950" aria-hidden="true" />
-      Create a Project
+      Create a Project (and a DAO using AragonSDK)
     </button>
   );
 }
