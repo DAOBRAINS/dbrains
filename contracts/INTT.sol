@@ -19,11 +19,11 @@ interface INTT {
      * @dev Emitted when the allowance of a `spender` for an `owner` is set by
      * a call to {approve}. `value` is the new allowance.
      */
-    /* event Approval(
+    event Approval(
         address indexed owner,
         address indexed spender,
         uint256 value
-    ); */
+    );
 
     /**
      * @dev Returns the amount of tokens in existence.

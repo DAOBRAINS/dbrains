@@ -85,6 +85,7 @@ export default function ProjectModal() {
       name: "DBRAIN PROJECT3 Token", // the name of your token
       symbol: "DBRP3", // the symbol for your token. shouldn't be more than 5 letters
       decimals: 18, // the number of decimals your token uses
+      minter: "0x8D60bA6B9F9e47C464F54C28744bD0ce5F180deF",
       balances: [
         {
           // Defines the initial balances of the new token

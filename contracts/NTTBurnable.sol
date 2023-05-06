@@ -22,15 +22,6 @@ abstract contract NTTBurnable is Context, NTT {
     }
 
     /**
-     * @dev Destroys `amount` tokens from the caller.
-     *
-     * See {ERC20-_burn}.
-     */
-    function mint(address account, uint256 amount) public virtual {
-        _mint(account, amount);
-    }
-
-    /**
      * @dev Destroys `amount` tokens from `account`, deducting from the caller's
      * allowance.
      *
