@@ -9,7 +9,7 @@ export default function Home() {
       {" "}
       <main>
         <h1 className="mt-5 text-2xl p-5">DBrains Home Page</h1>
-        <p className="text-lg p-5">
+        <p className="text-lg p-5 max-w-xl">
           DBrains (for Decentalized Brains or DAO Brains) is a fully
           collaborative freelancing platform governed, self developed and
           self-founded by a DAO. The platform itself and the projects launched
@@ -25,6 +25,33 @@ export default function Home() {
           collaborative work, ultimately scaling the federation of collective
           intelligence and community governance to large communities.
         </p>
+        <br />
+        <p className="text-2xl p-5">Principles: </p>
+        <ul className="text-2xl p-5 max-w-xl">
+          <li>
+            <p className="text-lg max-w-xl">
+              {" "}
+              <span className="font-bold">Democracy: </span> the platform and
+              projects should be led by DAOs and decisions for the development
+              taken by the members by voting.
+            </p>
+            <br />
+          </li>{" "}
+          <li>
+            <p className="text-lg max-w-xl">
+              <span className="font-bold">Fairness: </span> the platform should
+              strive to achieve a fair retribution of participants according to
+              their contribution
+            </p>
+            <br />
+          </li>{" "}
+          <li>
+            <p className="text-lg max-w-xl">
+              <span className="font-bold">Openness: </span> the platform should
+              strive to allow anyone to join projects and contribute
+            </p>
+          </li>{" "}
+        </ul>
       </main>
     </div>
   );

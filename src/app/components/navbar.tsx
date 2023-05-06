@@ -8,7 +8,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Link from "next/link";
 
 const navigation = [
-  { name: "Projects Dashboard", href: "/projects-board", current: true },
+  { name: "Projects Board", href: "/projects-board", current: true },
   { name: "DBrains Main DAO", href: "/dbrains-dao", current: false },
   /* { name: "Projects", href: "#", current: false },
   { name: "Calendar", href: "#", current: false }, */
@@ -38,10 +38,10 @@ export default function NavBar() {
               </div>
               <div className="flex flex-1 items-center justify-center  sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                  <h1 className="my-3 text-2xl">DBrains</h1>
-                  <Link className="p-2" href="/home">
+                  <Link href="/">
+                    <h1 className="p-2 text-2xl">DBrains</h1>
                     <Image
-                      className="block h-8 w-auto lg:hidden"
+                      className=" block h-8 w-auto lg:hidden"
                       src="/DBrains.jpg"
                       width={10}
                       height={10}
