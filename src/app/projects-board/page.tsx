@@ -9,7 +9,7 @@ import ProjectModal from "../components/projectModal";
   description: "The Fully Collaborative Freelancing Plateforme",
 }; */
 
-export default function ProjectsDashboard() {
+export default function ProjectsBoard() {
   const projects = [
     {
       id: 1,
@@ -24,6 +24,7 @@ export default function ProjectsDashboard() {
   ];
   return (
     <main className="mx-5 my-5">
+      <h1 className="my-5 text-2xl">Projects Board</h1>
       {/*  <Test />
       <CreateDaoBox /> */}
       <ProjectModal />

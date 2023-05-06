@@ -8,8 +8,8 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Link from "next/link";
 
 const navigation = [
-  { name: "Projects Dashboard", href: "/projects-dashboard", current: true },
-  { name: "DBrains DAO", href: "/dbrains-dao", current: false },
+  { name: "Projects Dashboard", href: "/projects-board", current: true },
+  { name: "DBrains Main DAO", href: "/dbrains-dao", current: false },
   /* { name: "Projects", href: "#", current: false },
   { name: "Calendar", href: "#", current: false }, */
 ];
@@ -38,7 +38,8 @@ export default function NavBar() {
               </div>
               <div className="flex flex-1 items-center justify-center  sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                  <Link href="/home">
+                  <h1 className="my-3 text-2xl">DBrains</h1>
+                  <Link className="p-2" href="/home">
                     <Image
                       className="block h-8 w-auto lg:hidden"
                       src="/DBrains.jpg"
@@ -65,9 +66,9 @@ export default function NavBar() {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current
+                          /* item.current
                             ? "bg-gray-900 text-white"
-                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                            : */ "text-gray-300 hover:bg-gray-700 hover:text-white",
                           "rounded-md px-3 py-2 text-sm font-medium"
                         )}
                         aria-current={item.current ? "page" : undefined}
