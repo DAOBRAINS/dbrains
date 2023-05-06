@@ -1,10 +1,8 @@
 "use client";
 
 import { Metadata } from "next";
-import CreateDaoBox from "../components/createDaoBox";
-import CreateProject from "../components/createProjectSDK";
+
 import ProjectModal from "../components/projectModal";
-import Test from "../components/test";
 
 /* export const metadata: Metadata = {
   title: "Projects Dashboard | DBrains",
