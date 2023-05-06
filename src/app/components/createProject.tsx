@@ -11,6 +11,9 @@ import {
 } from "@aragon/sdk-client";
 import { useAragonSDKContext } from "../context/AragonSDK";
 import { NFTStorage, File, Blob, BlockstoreI } from "nft.storage";
+import { useState } from "react";
+import Modal from "./login";
+import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 export default function CreateProject() {
   const { context } = useAragonSDKContext();
@@ -104,21 +107,71 @@ export default function CreateProject() {
     }
   }
 
+  const [IsModalOpen, setIsModalOpen] = useState(false);
+  //ghostshell
+
   const createProject = async () => {
     await createDAO();
   };
 
   return (
-    <button
-      type="button"
-      className="inline-flex items-center gap-x-2 rounded-md bg-white px-3.5 py-2.5 text-2xl text-gray-950 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-      onClick={() => {
-        createProject();
-      }}
-    >
-      {" "}
-      <PlusIcon className="-mr-0.5 h-5 w-5  text-gray-950" aria-hidden="true" />
-      Create a Project
-    </button>
+    <>
+      <button
+        type="button"
+        className="inline-flex items-center gap-x-2 rounded-md bg-white px-3.5 py-2.5 text-xl text-gray-950 shadow-sm hover:bg-blue-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 w-[15rem]"
+        onClick={() => {
+          setIsModalOpen(true);
+        }}
+      >
+        {" "}
+        <PlusIcon
+          className="-mr-0.5 h-5 w-5  text-gray-950"
+          aria-hidden="true"
+        />
+        Create a Project
+      </button>
+      <Modal show={IsModalOpen}>
+        <button
+        className="rounded-full bg-gray-300 w-[2rem] h-[2rem] scale-[0.8]"
+          onClick={() => {
+            setIsModalOpen(false);
+          }}
+        >
+          <XMarkIcon className="scale-[0.8]"/>
+        </button>
+        <p className="text-xl mb-4">Create Project</p>
+        <div className="w-11/12 flex flex-col">
+          <form className="flex flex-col" action="">
+            <label>Project Name</label>
+            <input
+              type="text"
+              name="p-name"
+              placeholder="Project Name"
+              required
+              className="w-11/12 p-2 outline-blue-500 border-2 border-blue-400 rounded-md m-2 mx-0 mb-4"
+            />
+            <label>Project Description</label>
+            <textarea
+              cols={2}
+              rows={3}
+              placeholder="Project Description"
+              required
+              className="w-11/12 rounded-md border-blue-400 border-2 outline-blue-500 m-2 mx-0 mb-4 p-2"
+            />
+            <label>Project Picture</label>
+            <input
+              type="text"
+              name="p-name"
+              placeholder="Project Picture Link"
+              required
+              className="w-11/12 p-2 outline-blue-500 border-2 border-blue-400 rounded-md m-2 mx-0 mb-4"
+            />
+            <button className="bg-blue-400 rounded-md w-full p-2">
+              Create
+            </button>
+          </form>
+        </div>
+      </Modal>
+    </>
   );
 }

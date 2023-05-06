@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Fragment } from "react";
 import Image from "next/image";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
@@ -6,6 +6,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 var dbrainslogo = "./public/brainOfBrains.jpg";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Link from "next/link";
+import Modal from "./login";
 
 const navigation = [
   { name: "Projects Dashboard", href: "/projects-dashboard", current: true },
@@ -19,10 +20,91 @@ function classNames(...classes: string[]) {
 }
 
 export default function NavBar() {
+  const [IsLoginOpen, setIsLoginOpen] = useState(false);
+  const [IsSignupOpen, setIsSignupOpen] = useState(false);
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
         <>
+          <Modal show={IsLoginOpen}>
+            <button
+            className="rounded-full bg-gray-300 w-[2rem] h-[2rem] scale-[0.8]"
+              onClick={() => {
+                setIsLoginOpen(false);
+              }}
+            >
+              <XMarkIcon className="scale-[0.8]"/>
+            </button>
+            <p className="text-xl mb-4 font-bold">Login</p>
+            <div className="w-11/12 flex flex-col">
+              <form className="flex flex-col" action="">
+                <label>Username</label>
+                <input
+                  type="text"
+                  name="p-name"
+                  placeholder="Username"
+                  required
+                  className="w-11/12 p-2 outline-blue-500 border-2 border-blue-400 rounded-md m-2 mx-0 mb-4"
+                />
+                <label>Password</label>
+                <input
+                  type="password"
+                  name="p-name"
+                  placeholder="Password"
+                  required
+                  className="w-11/12 p-2 outline-blue-500 border-2 border-blue-400 rounded-md m-2 mx-0 mb-4"
+                />
+                <button className="bg-blue-400 rounded-md w-11/12 p-2 font-bold">
+                  Login
+                </button>
+                <p className="p-2">Dont have an account ? <a className="text-blue-500 underline cursor-pointer" onClick={() => {setIsLoginOpen(false); setIsSignupOpen(true)}}>Register</a></p>
+              </form>
+            </div>
+          </Modal>
+          <Modal show={IsSignupOpen}>
+            <button
+            className="rounded-full bg-gray-300 w-[2rem] h-[2rem] scale-[0.8]"
+              onClick={() => {
+                setIsSignupOpen(false);
+              }}
+            >
+              <XMarkIcon className="scale-[0.8]"/>
+            </button>
+            <p className="text-xl mb-4 font-bold">Register</p>
+            <div className="w-full justify-center items-center flex flex-col">
+              <form className=" w-10/12 flex flex-col" action="">
+                <label>Username</label>
+                <input
+                  type="text"
+                  name="p-name"
+                  placeholder="Username"
+                  required
+                  className="w-11/12 p-2 outline-blue-500 border-2 border-blue-400 rounded-md m-2 mx-0 mb-4"
+                />
+                <label>Create Password</label>
+                <input
+                  type="password"
+                  name="p-name"
+                  placeholder="Password"
+                  required
+                  className="w-11/12 p-2 outline-blue-500 border-2 border-blue-400 rounded-md m-2 mx-0 mb-4"
+                />
+                <label>Confirm Password</label>
+                <input
+                  type="password"
+                  name="p-name"
+                  placeholder="Password"
+                  required
+                  className="w-11/12 p-2 outline-blue-500 border-2 border-blue-400 rounded-md m-2 mx-0 mb-4"
+                />
+                <button className="bg-blue-400 rounded-md w-11/12 p-2 font-bold">
+                  Register
+                </button>
+                <p className="p-2">Already have an account ? <a className="text-blue-500 underline cursor-pointer" onClick={() => {setIsLoginOpen(true); setIsSignupOpen(false)}}>Login</a></p>
+              </form>
+            </div>
+          </Modal>
+
           <div className="mx-auto max-w-full px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -152,6 +234,14 @@ export default function NavBar() {
                   </Transition>
                 </Menu>
               </div>
+              <button
+                className="p-2 bg-blue-500 w-[6rem] m-2 rounded-md text-white font-bold"
+                onClick={() => {
+                  setIsLoginOpen(true);
+                }}
+              >
+                Login
+              </button>
               <div className="hidden sm:p-5 sm:block">
                 <ConnectButton />
               </div>
