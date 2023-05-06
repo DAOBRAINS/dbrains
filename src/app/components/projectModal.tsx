@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import ProjectModalInputs from "./projectModalInputs";
-import { Inputs } from "./createProjectSDK";
 import { useAragonSDKContext } from "../context/AragonSDK";
 import { useAccount } from "wagmi";
 import { DaoMetadata, VotingMode } from "@aragon/sdk-client";
@@ -23,6 +22,14 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+
+export interface Inputs {
+  projectName: string;
+  projectDesc: string;
+  ens: string;
+  projectType: string;
+  tokenType: string;
+}
 
 export default function ProjectModal() {
   const [open, setOpen] = useState(false);
@@ -75,8 +82,8 @@ export default function ProjectModal() {
       votingMode: VotingMode.EARLY_EXECUTION, // default is STANDARD. other options: EARLY_EXECUTION, VOTE_REPLACEMENT
     },
     newToken: {
-      name: "DBRAIN PROJECT1 Token", // the name of your token
-      symbol: "DBRP1", // the symbol for your token. shouldn't be more than 5 letters
+      name: "DBRAIN PROJECT3 Token", // the name of your token
+      symbol: "DBRP3", // the symbol for your token. shouldn't be more than 5 letters
       decimals: 18, // the number of decimals your token uses
       balances: [
         {
