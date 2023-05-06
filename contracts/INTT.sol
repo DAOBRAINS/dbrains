@@ -51,10 +51,10 @@ interface INTT {
      *
      * This value changes when {approve} or {transferFrom} are called.
      */
-    f/* unction allowance(
+    function allowance(
         address owner,
         address spender
-    ) external view returns (uint256); */
+    ) external view returns (uint256);
 
     /**
      * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.
@@ -70,7 +70,7 @@ interface INTT {
      *
      * Emits an {Approval} event.
      */
-    //function approve(address spender, uint256 amount) external returns (bool);
+    function approve(address spender, uint256 amount) external returns (bool);
 
     /**
      * @dev Moves `amount` tokens from `from` to `to` using the
