@@ -55,27 +55,28 @@ export default function Home() {
         <p className="text-2xl p-5">How does it work? </p>{" "}
         <p className="text-lg p-5">
           Members can propose new projects which are listed in the projects
-          board. There can be many sort of projects, like "paid projects" for
-          which the projects launchers lock payments in escrow which can be
-          distributed to contributors at the fulfillment of the project. There
-          can also be "free projects" whose members gather together around the
-          development of some ideas. Some projects are open to everyone, some
-          projects may wish to select who is onboarded. The members of the
-          projects self-organize to propose developments paths. Decisions are
-          taken democratically. Members determine together how to split the
-          development into tasks and assign them, and basically design together
-          the entire project. The rewards for the fulfillment of tasks are also
-          determined and validated by the DAOs. The monitoring/evaluation of
-          members contributions will be initially mainly performed by DAOs, but
-          could be later combined with the monitoring/evaluation by some AI
-          algorithms. So that people can be guaranteed to be fairly remunerated
-          for their ideas and hard working. Tools like feature.sh for the setup
-          of bounties, or Sourcecred.io for the monitoring of contribution could
-          be integrated into the platform for this purpose.
+          board. There can be many sort of projects, like &quot;paid
+          projects&quot; for which the projects launchers lock payments in
+          escrow which can be distributed to contributors at the fulfillment of
+          the project. There can also be &quot;free projects&quot; whose members
+          gather together around the development of some ideas. Some projects
+          are open to everyone, some projects may wish to select who is
+          onboarded. The members of the projects self-organize to propose
+          developments paths. Decisions are taken democratically. Members
+          determine together how to split the development into tasks and assign
+          them, and basically design together the entire project. The rewards
+          for the fulfillment of tasks are also determined and validated by the
+          DAOs. The monitoring/evaluation of members contributions will be
+          initially mainly performed by DAOs, but could be later combined with
+          the monitoring/evaluation by some AI algorithms. So that people can be
+          guaranteed to be fairly remunerated for their ideas and hard working.
+          Tools like feature.sh for the setup of bounties, or Sourcecred.io for
+          the monitoring of contribution could be integrated into the platform
+          for this purpose.
         </p>
         <p className="text-2xl p-5">Platform Tokenomics:</p>{" "}
         <p className="text-lg p-5">
-          The DBR token associated with the main DAO's platform is a Non
+          The DBR token associated with the main DAO&apos;s platform is a Non
           Transferable Token (NTT). Members who do contribute to the platform
           development receive DBR NTT tokens if their contribution is validated
           by the DAO. DBR tokens are somewhat equivalent to equity in
