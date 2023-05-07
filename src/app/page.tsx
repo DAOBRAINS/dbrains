@@ -32,8 +32,8 @@ export default function Home() {
             <p className="text-lg max-w-xl">
               {" "}
               <span className="font-bold">Democracy: </span> the platform and
-              projects should be led by DAOs and decisions for the development
-              taken by the members by voting.
+              projects should be developed by DAOs and decisions for the
+              development taken by the members by voting.
             </p>
             <br />
           </li>{" "}
