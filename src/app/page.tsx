@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div>
       {" "}
-      <main className="max-w-xl">
+      <main className="w-full max-w-xl">
         <h1 className="mt-5 text-2xl p-5">DBrains Home Page</h1>
         <p className="text-lg p-5">
           DBrains (for Decentralized Brains or DAO Brains) is a fully
@@ -52,53 +52,6 @@ export default function Home() {
             </p>
           </li>{" "}
         </ul>
-        <p className="text-2xl p-5">How does it work? </p>{" "}
-        <p className="text-lg p-5">
-          Members can propose new projects which are listed in the projects
-          board. There can be many sort of projects, like &quot;paid
-          projects&quot; for which the projects launchers lock payments in
-          escrow which can be distributed to contributors at the fulfillment of
-          the project. There can also be &quot;free projects&quot; whose members
-          gather together around the development of some ideas. Some projects
-          are open to everyone, some projects may wish to select who is
-          onboarded. The members of the projects self-organize to propose
-          developments paths. Decisions are taken democratically. Members
-          determine together how to split the development into tasks and assign
-          them, and basically design together the entire project. The rewards
-          for the fulfillment of tasks are also determined and validated by the
-          DAOs. The monitoring/evaluation of members contributions will be
-          initially mainly performed by DAOs, but could be later combined with
-          the monitoring/evaluation by some AI algorithms. So that people can be
-          guaranteed to be fairly remunerated for their ideas and hard working.
-          Tools like feature.sh for the setup of bounties, or Sourcecred.io for
-          the monitoring of contribution could be integrated into the platform
-          for this purpose.
-        </p>
-        <p className="text-2xl p-5">Platform Tokenomics:</p>{" "}
-        <p className="text-lg p-5">
-          The DBR token associated with the main DAO&apos;s platform is a Non
-          Transferable Token (NTT). Members who do contribute to the platform
-          development receive DBR NTT tokens if their contribution is validated
-          by the DAO. DBR tokens are somewhat equivalent to equity in
-          traditional companies, they are bound to the contributors who earned
-          them. They cannot be transferred. When the project is coming to
-          maturity and generate money, contributors will receive dividends
-          depending on their earned NTTs. The DAO can decide to open to
-          investors, who can purchase DBRs in exchange of currencies at a rate
-          determined by the DAO. The currencies are deposited into the DAO
-          treasury which can decide to use it for different purposes. Investors
-          are then part of the DAO like others contributors owners of DBRs. DAO
-          members can use the treasury for hiring external services or for
-          providing remuneration to the members, who can decide to burn some of
-          their DBRs in exchange of some payment in available currencies. This
-          system will avoid speculation typical to web3 project and reward
-          contributors fairly. Thus the platform will self developed without the
-          need for initial investment. Projects developed through the platform
-          can be similarly associated with NTT tokens and funding/remuneration
-          managed along the same lines. But Projects launchers are free to
-          decide the type of tokenomics they want for their project. Projects
-          launchers will pay some fee to the DBrains DAO for using the Platform.
-        </p>
       </main>
     </div>
   );

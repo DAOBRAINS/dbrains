@@ -10,8 +10,7 @@ import Link from "next/link";
 const navigation = [
   { name: "Projects Board", href: "/projects-board", current: true },
   { name: "DBrains Main DAO", href: "/dbrains-dao", current: false },
-  /* { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false }, */
+  { name: "Whitepaper", href: "/whitepaper", current: false },
 ];
 
 function classNames(...classes: string[]) {
@@ -39,7 +38,7 @@ export default function NavBar() {
               <div className="flex flex-1 items-center justify-center  sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
                   <Link href="/">
-                    <h1 className="p-2 text-2xl">DBrains</h1>
+                    <h1 className="p-2 text-white text-2xl">DBrains</h1>
                     <Image
                       className=" block h-8 w-auto lg:hidden"
                       src="/DBrains.jpg"

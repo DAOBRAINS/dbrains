@@ -12,7 +12,7 @@ import Link from "next/link";
 import { Dialog } from "@mui/material";
 
 const style = {
-  position: "absolute" as "absolute",
+  position: "relative" as "relative",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
