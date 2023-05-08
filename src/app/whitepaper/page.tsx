@@ -82,7 +82,7 @@ export default function Whitepaper() {
           </p>
           <Image
             className=" p-5 block  max-w-max"
-            src="/dbrains_functioning2.png"
+            src="/dbrains_functioning3.png"
             width={1300}
             height={1300}
             alt="DBrains functioning"
