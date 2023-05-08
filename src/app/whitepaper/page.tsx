@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 
 /* export const metadata: Metadata = {
   title: "Projects Dashboard | DBrains",
@@ -79,6 +80,13 @@ export default function Whitepaper() {
             for the setup of bounties, or Sourcecred.io for the monitoring of
             contribution could be integrated into the platform for this purpose.
           </p>
+          <Image
+            className=" p-5 block  max-w-max"
+            src="/dbrains_functioning2.png"
+            width={1300}
+            height={1300}
+            alt="DBrains functioning"
+          />
           <p className="text-2xl p-5">Platform Tokenomics:</p>{" "}
           <p className="text-lg p-5">
             The DBR token associated with the main DAO&apos;s platform is a Non
