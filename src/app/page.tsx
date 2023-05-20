@@ -58,6 +58,54 @@ export default function Home() {
             </ul>
           </div>
         </div>
+        <div
+          className="flex flex-col text-xl font-semibold 
+            bg-gradient-to-r bg-clip-text  text-transparent 
+            from-indigo-500 via-purple-500 to-indigo-500
+            animate-text
+            "
+        >
+          <div className="ml-10 p-3 animate-textAnim">
+            Together, we can build this platform for all of us ...
+          </div>
+          <div className="ml-10 p-3 animate-textAnim animation-delay-4000">
+            Federating / amplifying collective intelligence by improving the
+            efficiency of collaborative working
+          </div>
+          <div className="ml-10 p-3 animate-textAnim animation-delay-8000">
+            Empowering communities to self-organize, fulfilling the purpose of
+            blockchain
+          </div>
+          <div className="ml-10 p-3 animate-textAnim animation-delay-12000">
+            Solving the present inefficiency of the labour market
+          </div>
+
+          <div className="ml-10 p-3 animate-textAnim animation-delay-16000">
+            Solving issues related to candidate selection and job seeking
+          </div>
+          <div className="ml-10 p-3 animate-textAnim animation-delay-20000">
+            Striving for fair evaluation of contribution and remuneration,
+            avoiding conflict of interests in traditional companies.
+          </div>
+          <div className="ml-10 p-3 animate-textAnim animation-delay-24000">
+            Developing a tokenomic based on Non Transferable Token (NTT) to keep
+            control of investments, avoiding speculation and protecting the
+            value created by projects contributors.
+          </div>
+          <div className="ml-10 p-3 animate-textAnim animation-delay-28000">
+            No need for initial investment, if we can find all competences among
+            the people of the community.
+          </div>
+          <div className="ml-10 p-3 animate-textAnim animation-delay-32000">
+            Sharing your experience and benefiting from the experience of
+            others, avoiding re-inventing the wheel every time!
+          </div>
+          <div className="ml-10 p-3 animate-textAnim animation-delay-36000">
+            If you have a car, you can work with Uber … if you have an
+            apartment, you can work with airbnb … if you have a brain, you can
+            work with DBrains!
+          </div>
+        </div>
       </div>
     </main>
   );
