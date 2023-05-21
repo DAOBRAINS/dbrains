@@ -10,7 +10,8 @@ export default function Home() {
       <div className="relative mx-5 my-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         <div>
           <div>
-            <p className="text-lg p-5">
+            <p className="text-2xl p-5">Intro: </p>
+            <p className="text-lg  p-5">
               DBrains (for Decentralized Brains or DAO Brains) is a fully
               collaborative freelancing platform governed, self developed and
               self-founded by a DAO. The platform itself and the projects
@@ -61,11 +62,14 @@ export default function Home() {
         <div
           className="flex flex-col text-xl font-semibold 
             bg-gradient-to-r bg-clip-text  text-transparent 
-            from-indigo-500 via-purple-500 to-indigo-500
+           from-blue-500 via-white to-red-700
             animate-text
             "
         >
-          <div className="ml-10 p-3 animate-textAnim">
+          {" "}
+          {/* from-indigo-500 via-purple-500 to-indigo-500 */}
+          <div className="ml-10 p-5 text-2xl animate-textAnim">Objectives:</div>
+          <div className="ml-10 p-3 text-xl animate-textAnim">
             Together, we can build this platform for all of us ...
           </div>
           <div className="ml-10 p-3 animate-textAnim animation-delay-4000">
@@ -79,7 +83,6 @@ export default function Home() {
           <div className="ml-10 p-3 animate-textAnim animation-delay-12000">
             Solving the present inefficiency of the labour market
           </div>
-
           <div className="ml-10 p-3 animate-textAnim animation-delay-16000">
             Solving issues related to candidate selection and job seeking
           </div>
@@ -102,7 +105,7 @@ export default function Home() {
           </div>
           <div className="ml-10 p-3 animate-textAnim animation-delay-36000">
             If you have a car, you can work with Uber … if you have an
-            apartment, you can work with airbnb … if you have a brain, you can
+            apartment, you can work with Airbnb … if you have a brain, you can
             work with DBrains!
           </div>
         </div>
