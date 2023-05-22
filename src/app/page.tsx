@@ -27,7 +27,7 @@ export default function Home() {
     function () {
       const interval = setInterval(function () {
         setCount(count + 1);
-      }, 5000);
+      }, 7000);
 
       return function () {
         clearTimeout(interval);
