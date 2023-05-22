@@ -13,23 +13,17 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       animation: {
-        textAnim: "textAnim 4s",
-        text: "text 5s ease infinite",
+        textAnim: "textAnim 4s infinite",
+        text: "text 6s ease infinite",
       },
       keyframes: {
         textAnim: {
           "0%, 100%": {
-            transform: " scale(1)",
+            transform: " scale(0.)",
           },
           "50%": {
-            transform: " scale(1.05)",
+            transform: " scale(1.0)",
           },
-          /*  "66%": {
-            transform: "translate(-20px,20px) scale(0.9)",
-          }, */
-          /* "100%": {
-            transform: "translate(0px,0px) scale(1)",
-          }, */
         },
         text: {
           "0%, 100%": {
