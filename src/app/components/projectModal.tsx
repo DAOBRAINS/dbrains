@@ -82,15 +82,15 @@ export default function ProjectModal() {
       votingMode: VotingMode.EARLY_EXECUTION, // default is STANDARD. other options: EARLY_EXECUTION, VOTE_REPLACEMENT
     },
     newToken: {
-      name: "DBRAIN PROJECT3 Token", // the name of your token
-      symbol: "DBRP3", // the symbol for your token. shouldn't be more than 5 letters
+      name: "DBRAIN Test Token", // the name of your token
+      symbol: "DBR", // the symbol for your token. shouldn't be more than 5 letters
       decimals: 18, // the number of decimals your token uses
       minter: "0x8D60bA6B9F9e47C464F54C28744bD0ce5F180deF",
       balances: [
         {
           // Defines the initial balances of the new token
           address: "0xE60930Dd528485BA57F4a17b02209877C2A9bFaC", //address!, // address of the account to receive the newly minted tokens
-          balance: BigInt(10), // amount of tokens that address should receive
+          balance: BigInt(1), // amount of tokens that address should receive
         },
       ],
     },

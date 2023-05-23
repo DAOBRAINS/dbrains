@@ -39,8 +39,8 @@ export default function Home() {
   return (
     <main className="">
       <h1 className="mt-5 text-2xl p-5">DBrains Home</h1>
-      <div className="relative mx-5 my-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        <div>
+      <div className="relative mx-5 my-5 grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3">
+        <div className="sm:order-first">
           <div>
             <p className="text-2xl p-5">Intro: </p>
             <p className="text-lg  p-5">
@@ -95,7 +95,7 @@ export default function Home() {
         {/*  from-blue-500 via-white to-red-700
          from-white via-orange-600 to-indigo-500 */}
         <div
-          className="flex text-center self-center text-4xl font-semibold 
+          className=" order-first sm:order-last flex text-center self-center text-4xl font-semibold 
             bg-gradient-to-r bg-clip-text  text-transparent 
             from-white via-orange-600 to-white
             animate-text"
