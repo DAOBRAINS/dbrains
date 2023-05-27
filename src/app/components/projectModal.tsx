@@ -7,7 +7,12 @@ import ProjectModalInputs from "./projectModalInputs";
 //import { useAragonSDKContext } from "../context/AragonSDK";
 import { useAccount } from "wagmi";
 import { DaoMetadata, VotingMode } from "@aragon/sdk-client";
-import { encodeTokenVotingPlugin, useNewDao } from "@daobox/use-aragon";
+import {
+  encodePluginInstallItem,
+  EncodePluginInstallationProps,
+  encodeTokenVotingPlugin,
+  useNewDao,
+} from "@daobox/use-aragon";
 import Link from "next/link";
 import { Dialog } from "@mui/material";
 
@@ -73,7 +78,7 @@ export default function ProjectModal() {
     links: [],
   };
 
-  const plugin = encodeTokenVotingPlugin({
+  /* const plugin = encodeTokenVotingPlugin({
     votingSettings: {
       minDuration: 60 * 60 * 24 * 2, // seconds (minimum amount is 3600)
       minParticipation: 0.25, // 25%
@@ -95,7 +100,35 @@ export default function ProjectModal() {
       ],
     },
     network: "mumbai",
-  });
+  }); */
+
+  //types of data provided to prepareInstallation (votingSetting, tokenSetting, mintSetting)
+  //same as for tokenVotingPlugin without the token address since we will always create an NTToken
+  const dataTypes = [
+    "tuple(uint8 votingMode, uint64 supportThreshold, uint64 minParticipation, uint64 minDuration, uint256 minProposerVotingPower) votingSettings",
+    "tuple(string name, string symbol) tokenSettings",
+    "tuple(address[] receivers, uint256[] amounts) mintSettings",
+  ];
+
+  const pluginParameters = [
+    {
+      minDuration: 60 * 60 * 24 * 2, // seconds (minimum amount is 3600)
+      minParticipation: 0.25, // 25%
+      supportThreshold: 0.5, // 50%
+      minProposerVotingPower: BigInt("5000"), // default 0
+      votingMode: VotingMode.EARLY_EXECUTION, // default is STANDARD. other options: EARLY_EXECUTION, VOTE_REPLACEMENT
+    },
+    { name: "DBrains Token", symbol: "DBR" },
+    { receivers: [], amounts: [] },
+  ];
+
+  const encodedData: EncodePluginInstallationProps = {
+    types: dataTypes,
+    repoAddress: "0x4A0862795A79302FB102d5dba42ed7160a6AB08b",
+    parameters: pluginParameters,
+  };
+
+  const plugin = encodePluginInstallItem(encodedData);
 
   const { mutate, creationStatus, data, error } = useNewDao({
     daoMetadata,
