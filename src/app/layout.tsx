@@ -8,7 +8,7 @@ import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { mainnet, polygonMumbai, goerli, polygon, gnosis } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
-//import { AragonSDKWrapper } from "./context/AragonSDK";
+import { AragonSDKWrapper } from "./context/AragonSDK";
 import { useIsMounted } from "./hooks/useIsMounted";
 import { AragonProvider } from "@daobox/use-aragon";
 import AppShell from "./components/appShell";
@@ -53,9 +53,11 @@ export default function RootLayout({
         <WagmiConfig client={wagmiClient}>
           <RainbowKitProvider chains={chains}>
             {isMounted && (
-              <AragonProvider>
-                <AppShell>{children}</AppShell>
-              </AragonProvider>
+              <AragonSDKWrapper>
+                <AragonProvider>
+                  <AppShell>{children}</AppShell>
+                </AragonProvider>
+              </AragonSDKWrapper>
             )}
           </RainbowKitProvider>
         </WagmiConfig>

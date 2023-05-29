@@ -4,9 +4,13 @@ import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import ProjectModalInputs from "./projectModalInputs";
-//import { useAragonSDKContext } from "../context/AragonSDK";
+import { useAragonSDKContext } from "../context/AragonSDK";
 import { useAccount } from "wagmi";
-import { DaoMetadata, VotingMode } from "@aragon/sdk-client";
+import {
+  ContractVotingSettings,
+  DaoMetadata,
+  VotingMode,
+} from "@aragon/sdk-client";
 import {
   encodePluginInstallItem,
   EncodePluginInstallationProps,
@@ -15,13 +19,14 @@ import {
 } from "@daobox/use-aragon";
 import Link from "next/link";
 import { Dialog } from "@mui/material";
+import { Client, votingSettingsToContract } from "@aragon/sdk-client";
 
 const style = {
-  position: "relative" as "relative",
+  position: "relative",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 1000,
+  width: 500,
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
@@ -40,6 +45,10 @@ export default function ProjectModal() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  /*  const { context } = useAragonSDKContext();
+
+  const client = new Client(context); */
 
   const handleChangeInputs = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -68,16 +77,6 @@ export default function ProjectModal() {
     setDisabled(true);
   }, [inputs]);
 
-  const createProject = () => {
-    mutate?.();
-  };
-
-  const daoMetadata: DaoMetadata = {
-    name: inputs.projectName,
-    description: inputs.projectDesc,
-    links: [],
-  };
-
   /* const plugin = encodeTokenVotingPlugin({
     votingSettings: {
       minDuration: 60 * 60 * 24 * 2, // seconds (minimum amount is 3600)
@@ -102,6 +101,16 @@ export default function ProjectModal() {
     network: "mumbai",
   }); */
 
+  const createProject = () => {
+    mutate?.();
+  };
+
+  const daoMetadata: DaoMetadata = {
+    name: inputs.projectName,
+    description: inputs.projectDesc,
+    links: [],
+  };
+
   //types of data provided to prepareInstallation (votingSetting, tokenSetting, mintSetting)
   //same as for tokenVotingPlugin without the token address since we will always create an NTToken
   const dataTypes = [
@@ -111,28 +120,32 @@ export default function ProjectModal() {
   ];
 
   const pluginParameters = [
-    {
-      minDuration: 60 * 60 * 24 * 2, // seconds (minimum amount is 3600)
-      minParticipation: 0.25, // 25%
-      supportThreshold: 0.5, // 50%
-      minProposerVotingPower: BigInt("5000"), // default 0
-      votingMode: VotingMode.EARLY_EXECUTION, // default is STANDARD. other options: EARLY_EXECUTION, VOTE_REPLACEMENT
-    },
+    Object.values(
+      votingSettingsToContract({
+        minDuration: 60 * 60 * 24 * 2, // seconds (minimum amount is 3600)
+        minParticipation: 0.25, // 25%
+        supportThreshold: 0.5, // 50%
+        minProposerVotingPower: BigInt("5000"), // default 0
+        votingMode: VotingMode.EARLY_EXECUTION, // default is STANDARD. other options: EARLY_EXECUTION, VOTE_REPLACEMENT
+      })
+    ) as ContractVotingSettings,
     { name: "DBrains Token", symbol: "DBR" },
-    { receivers: [], amounts: [] },
+    { receivers: [useAccount().address], amounts: [BigInt("1")] },
   ];
 
   const encodedData: EncodePluginInstallationProps = {
     types: dataTypes,
-    repoAddress: "0x4A0862795A79302FB102d5dba42ed7160a6AB08b",
+    repoAddress: "0x54bcBcB8084fF92201B6fd473Ad6CEB763B62E07",
     parameters: pluginParameters,
   };
 
   const plugin = encodePluginInstallItem(encodedData);
 
+  console.log("ensSubdomain:", inputs.ens);
+
   const { mutate, creationStatus, data, error } = useNewDao({
     daoMetadata,
-    ensSubdomain: inputs.ens,
+    ensSubdomain: inputs.ens, //"dbrainstestnttplugin",
     plugins: [plugin],
   });
 
