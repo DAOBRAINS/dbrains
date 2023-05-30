@@ -16,7 +16,7 @@ function ProjectModalInputs({ inputs, handleChangeInputs }: Props) {
     <div className="my-3 flex-col justify-between text-black text-sm">
       <input
         type="text"
-        className="border rounded p-2 py-3 w-full"
+        className="border text-center rounded p-2 py-3 w-full"
         placeholder="Name"
         value={inputs.projectName}
         onChange={handleChangeInputs}
@@ -24,7 +24,7 @@ function ProjectModalInputs({ inputs, handleChangeInputs }: Props) {
       />
       <input
         type="text"
-        className="border rounded p-2 py-3 w-full"
+        className="border text-center rounded p-2 py-3 w-full"
         placeholder="Description"
         value={inputs.projectDesc}
         onChange={handleChangeInputs}
@@ -32,7 +32,7 @@ function ProjectModalInputs({ inputs, handleChangeInputs }: Props) {
       />
       <input
         type="text"
-        className="border rounded p-2 py-3 w-full"
+        className="border text-center rounded p-2 py-3 w-full"
         placeholder="sub-ENS"
         value={inputs.ens}
         onChange={handleChangeInputs}
@@ -40,7 +40,7 @@ function ProjectModalInputs({ inputs, handleChangeInputs }: Props) {
       />
       <input
         type="text"
-        className="border rounded p-2 py-3 w-full"
+        className="border text-center rounded p-2 py-3 w-full"
         placeholder="Project type"
         value={inputs.projectType}
         onChange={handleChangeInputs}
@@ -48,7 +48,7 @@ function ProjectModalInputs({ inputs, handleChangeInputs }: Props) {
       />
       <input
         type="text"
-        className="border rounded p-2 py-3 w-full"
+        className="border text-center rounded p-2 py-3 w-full"
         placeholder="Token Type"
         value={inputs.tokenType}
         onChange={handleChangeInputs}
