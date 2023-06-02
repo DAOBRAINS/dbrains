@@ -56,7 +56,7 @@ export function AragonSDKWrapper({ children }: any) {
     }
     console.log("signer in AragonSDK useEffect", signer);
     setContext(new Context(aragonSDKContextParams));
-  }, [signer]);
+  }, [signer, prikey]);
 
   return (
     <AragonSDKContext.Provider value={{ context }}>
