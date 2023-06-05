@@ -135,7 +135,7 @@ export default function ProjectModal() {
 
   const encodedData: EncodePluginInstallationProps = {
     types: dataTypes,
-    repoAddress: "0x54bcBcB8084fF92201B6fd473Ad6CEB763B62E07",
+    repoAddress: "0x74BebBdC74b454394A466444BC09Ab2A18666Df0",
     parameters: pluginParameters,
   };
 

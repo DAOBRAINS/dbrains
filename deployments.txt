@@ -1,2 +1,10 @@
+
+05/06/23 First DAO creation with NTToken!
+dbrainstestnttplugin.dao.eth
+
+
+"daoAddress": "0xD30E4c57faA705cd190D24fFb6183D19Af338806",
+"daoTxHash": "0xcfd34c7f6156e7c27480836e4e2604d7df94167edb97e9bf0dfa130205a12f61"
+*******************************************************************
 "daoAddress": "0xd670447B458741e207867EBf13565A7f1559997E",
 "daoTxHash": "0xe96d1c32ab0ba1f1d11710e5ed4da0184bbb5dabd16026576888c2d29baaf6f4"

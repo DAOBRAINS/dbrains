@@ -3,7 +3,7 @@ import { useFetchDao } from "@daobox/use-aragon";
 function FetchDao() {
   const { data, isLoading, isError } = useFetchDao({
     // required
-    daoAddressOrEns: "dbrains-main-test.dao.eth",
+    daoAddressOrEns: "dbrainstestnttplugin.dao.eth",
   });
 
   if (isLoading) return <div>Loading...</div>;
