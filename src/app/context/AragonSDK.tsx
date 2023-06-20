@@ -1,4 +1,4 @@
-"using client";
+"use client";
 
 import { createContext, useEffect, useContext, useState } from "react";
 
@@ -13,7 +13,7 @@ export function AragonSDKWrapper({ children }: any) {
   const signer = useSigner().data;
 
   useEffect(() => {
-    const aragonSDKContextParams: ContextParams = {
+    let aragonSDKContextParams: ContextParams = {
       network: "maticmum", // mainnet, mumbai, etc
       signer: Wallet.createRandom(),
       daoFactoryAddress: "0x3ff1681f31f68Ff2723d25Cf839bA7500FE5d218", //"0x16B6c6674fEf5d29C9a49EA68A19944f5a8471D3", // the DAO Factory contract address from the Goerli network. You can find the daoFactoryAddress you need from the active_contracts file within the osx repository here: https://github.com/aragon/osx/blob/develop/active_contracts.json
@@ -33,7 +33,7 @@ export function AragonSDKWrapper({ children }: any) {
       ],
     };
     if (signer) {
-      const aragonSDKContextParams: ContextParams = {
+      aragonSDKContextParams = {
         network: "maticmum", // mainnet, mumbai, etc
         signer,
         daoFactoryAddress: "0x3ff1681f31f68Ff2723d25Cf839bA7500FE5d218", //"0x16B6c6674fEf5d29C9a49EA68A19944f5a8471D3", // the DAO Factory contract address from the Goerli network. You can find the daoFactoryAddress you need from the active_contracts file within the osx repository here: https://github.com/aragon/osx/blob/develop/active_contracts.json
@@ -53,8 +53,9 @@ export function AragonSDKWrapper({ children }: any) {
         ],
       };
     }
-    //console.log("signer in AragonSDK useEffect", signer);
+    console.log("signer in AragonSDK useEffect", signer);
     setContext(new Context(aragonSDKContextParams));
+    console.log("context in AragonSDK useEffect", context);
   }, [signer]);
 
   return (

@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@aragon/sdk-client": "^1.5.0",
+    "@aragon/sdk-client": "^1.8.2",
     "@daobox/use-aragon": "^0.0.5-beta.4",
     "@emotion/react": "^11.10.8",
     "@emotion/styled": "^11.10.8",

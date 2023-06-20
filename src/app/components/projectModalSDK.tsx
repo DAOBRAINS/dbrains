@@ -4,8 +4,18 @@ import { Fragment, useState, useEffect, useTransition } from "react";
 import ProjectModalInputs from "./projectModalInputs";
 import { Dialog, Transition } from "@headlessui/react";
 import { createDbrainsDao } from "./createDbrainsDAO";
-
-let [pending, startTransition] = useTransition();
+import { useAragonSDKContext } from "../context/AragonSDK";
+import {
+  Client,
+  ContractVotingSettings,
+  VotingMode,
+  votingSettingsToContract,
+} from "@aragon/sdk-client";
+import { useAccount } from "wagmi";
+import {
+  EncodePluginInstallationProps,
+  encodePluginInstallItem,
+} from "@daobox/use-aragon";
 
 export interface Inputs {
   projectName: string;
@@ -34,6 +44,8 @@ export default function ProjectModal() {
 
   const [disabled, setDisabled] = useState(true);
 
+  const [pending, startTransition] = useTransition();
+
   useEffect(() => {
     if (
       inputs.projectName &&
@@ -46,6 +58,42 @@ export default function ProjectModal() {
     }
     setDisabled(true);
   }, [inputs]);
+
+  //createDAO params
+  // Instantiate the general purpose client from the Aragon OSx SDK context.
+  const context = useAragonSDKContext();
+  console.log("context in projectModalSDK:", context);
+  const client: Client = new Client(context);
+
+  //types of data provided to prepareInstallation (votingSetting, tokenSetting, mintSetting)
+  //same as for tokenVotingPlugin without the token address since we will always create an NTToken
+  const dataTypes = [
+    "tuple(uint8 votingMode, uint64 supportThreshold, uint64 minParticipation, uint64 minDuration, uint256 minProposerVotingPower) votingSettings",
+    "tuple(string name, string symbol) tokenSettings",
+    "tuple(address[] receivers, uint256[] amounts) mintSettings",
+  ];
+
+  const pluginParameters = [
+    Object.values(
+      votingSettingsToContract({
+        minDuration: 60 * 60 * 24 * 2, // seconds (minimum amount is 3600)
+        minParticipation: 0.25, // 25%
+        supportThreshold: 0.5, // 50%
+        minProposerVotingPower: BigInt("5000"), // default 0
+        votingMode: VotingMode.EARLY_EXECUTION, // default is STANDARD. other options: EARLY_EXECUTION, VOTE_REPLACEMENT
+      })
+    ) as ContractVotingSettings,
+    { name: "DBrains Token", symbol: "DBR" },
+    { receivers: [useAccount().address], amounts: [BigInt("1")] },
+  ];
+
+  const encodedData: EncodePluginInstallationProps = {
+    types: dataTypes,
+    repoAddress: "0x74BebBdC74b454394A466444BC09Ab2A18666Df0",
+    parameters: pluginParameters,
+  };
+
+  const plugin = encodePluginInstallItem(encodedData);
 
   return (
     <div>
@@ -110,7 +158,7 @@ export default function ProjectModal() {
                         className="uppercase bg-red-600 w-full text-black p-3 rounded text-sm disabled:bg-gray-400"
                         onClick={() => {
                           startTransition(() => {
-                            createDbrainsDao(inputs);
+                            createDbrainsDao(client, inputs, plugin);
                           });
                         }}
                         disabled={disabled}
