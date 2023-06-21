@@ -61,7 +61,7 @@ export default function ProjectModal() {
 
   //createDAO params
   // Instantiate the general purpose client from the Aragon OSx SDK context.
-  const context = useAragonSDKContext();
+  const { context } = useAragonSDKContext();
   console.log("context in projectModalSDK:", context);
   const client: Client = new Client(context);
 

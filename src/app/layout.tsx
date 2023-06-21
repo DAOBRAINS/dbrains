@@ -54,9 +54,11 @@ export default function RootLayout({
           <RainbowKitProvider chains={chains}>
             {isMounted && (
               <AragonSDKWrapper>
-                <AragonProvider>
-                  <AppShell>{children}</AppShell>
-                </AragonProvider>
+                {isMounted && (
+                  <AragonProvider>
+                    <AppShell>{children}</AppShell>
+                  </AragonProvider>
+                )}
               </AragonSDKWrapper>
             )}
           </RainbowKitProvider>
