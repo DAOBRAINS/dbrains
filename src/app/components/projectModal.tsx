@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import ProjectModalInputs from "./projectModalInputs";
-import { useAragonSDKContext } from "../context/AragonSDK";
+//import { useAragonSDKContext } from "../context/AragonSDK";
 import { useAccount } from "wagmi";
 import {
   ContractVotingSettings,
