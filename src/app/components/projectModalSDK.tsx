@@ -4,7 +4,7 @@ import { Fragment, useState, useEffect, useTransition } from "react";
 import ProjectModalInputs from "./projectModalInputs";
 import { Dialog, Transition } from "@headlessui/react";
 import { createDbrainsDao } from "./createDbrainsDAO";
-import { useAragonSDKContext } from "../context/AragonSDK";
+import { AragonSDKContext } from "../context/AragonSDK";
 import {
   Client,
   ContractVotingSettings,
@@ -61,9 +61,9 @@ export default function ProjectModal() {
 
   //createDAO params
   // Instantiate the general purpose client from the Aragon OSx SDK context.
-  const { context } = useAragonSDKContext();
-  console.log("context in projectModalSDK:", context);
-  const client: Client = new Client(context);
+  /* const { context } = useAragonSDKContext();
+  console.log("context in projectModalSDK:", context); */
+  const client: Client = new Client(AragonSDKContext);
 
   //types of data provided to prepareInstallation (votingSetting, tokenSetting, mintSetting)
   //same as for tokenVotingPlugin without the token address since we will always create an NTToken
