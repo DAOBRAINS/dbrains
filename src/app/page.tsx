@@ -61,7 +61,9 @@ export default function Home() {
             </ul>
           </div>
         </div>
-        <Slogans />
+        <div className=" order-first sm:order-last text-center">
+          <Slogans />
+        </div>
       </div>
     </main>
   );
