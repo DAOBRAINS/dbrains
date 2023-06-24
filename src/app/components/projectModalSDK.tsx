@@ -63,7 +63,6 @@ export default function ProjectModal() {
   // Instantiate the general purpose client from the Aragon OSx SDK context.
   /* const { context } = useAragonSDKContext();
   console.log("context in projectModalSDK:", context); */
-  const client: Client = new Client(AragonSDKContext);
 
   //types of data provided to prepareInstallation (votingSetting, tokenSetting, mintSetting)
   //same as for tokenVotingPlugin without the token address since we will always create an NTToken
@@ -158,7 +157,7 @@ export default function ProjectModal() {
                         className="uppercase bg-red-600 w-full text-black p-3 rounded text-sm disabled:bg-gray-400"
                         onClick={() => {
                           startTransition(() => {
-                            createDbrainsDao(client, inputs, plugin);
+                            createDbrainsDao(inputs, plugin);
                           });
                         }}
                         disabled={disabled}

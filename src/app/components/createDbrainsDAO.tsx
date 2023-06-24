@@ -10,20 +10,29 @@ import {
 
 import { IPluginInstallItem } from "@daobox/use-aragon";
 import { Inputs } from "./projectModalSDK";
+import { NFTStorage } from "nft.storage";
+import { AragonSDKContext } from "../context/AragonSDK";
 
 export async function createDbrainsDao(
-  client: Client,
   inputs: Inputs,
   plugin: IPluginInstallItem
 ) {
+  const client: Client = new Client(AragonSDKContext);
   const daoMetadata: DaoMetadata = {
     name: inputs.projectName,
     description: inputs.projectDesc,
     links: [],
   };
+  console.log(process.env.NEXT_PUBLIC_NFTSTORAGE_IPFS_KEY);
+  const clientNFTSTORAGE = new NFTStorage({
+    token: process.env.NEXT_PUBLIC_NFTSTORAGE_IPFS_KEY as string,
+  });
+  const blob = new Blob([JSON.stringify(daoMetadata, null, 2)]);
+  const metadataUri = await clientNFTSTORAGE.storeBlob(blob);
+  console.log(metadataUri);
 
   // Through pinning the metadata in IPFS, we can get the IPFS URI. You can read more about it here: https://docs.ipfs.tech/how-to/pin-files/
-  const metadataUri = await client.methods.pinMetadata(daoMetadata);
+  //const metadataUri = await client.methods.pinMetadata(daoMetadata);
 
   const createDaoParams: CreateDaoParams = {
     metadataUri,

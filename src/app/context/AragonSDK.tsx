@@ -12,21 +12,19 @@ let aragonSDKContextParams: ContextParams = {
   //web3Providers: ["https://polygon-mumbai.g.alchemy.com/v2/"], //["https://rpc.ankr.com/eth_goerli"], // feel free to use the provider of your choosing: Alchemy, Infura, etc.
   ipfsNodes: [
     {
-      url: "https://ipfs.infura.io:5001", //"https://testing-ipfs-0.aragon.network/api/v0",
+      url: "https://testing-ipfs-0.aragon.network/api/v0", //"https://ipfs.infura.io:5001",
       headers: {
-        "X-API-KEY": process.env.INFURA_IPFS_KEY || "",
-        /* url: " https://api.nft.storage/pins", 
-      headers: {
-        "X-API-KEY": process.env.NEXT_PUBLIC_NFTSTORAGE_IPFS_KEY || "", */
+        "X-API-KEY": "b477RhECf8s8sdM7XrkLBs2wHc4kCMwpbcFC55Kt" || "",
       }, // make sure you have the key for your IPFS node within your .env file
     },
   ],
   graphqlNodes: [
     {
-      url: "https://subgraph.satsuma-prod.com/aragon/osx-mumbai/api", //?? // this will change based on the chain you're using (osx-mainnet alternatively)
+      url: "https://subgraph.satsuma-prod.com/qHR2wGfc5RLi6/aragon/osx-mumbai/api", //?? // this will change based on the chain you're using (osx-mainnet alternatively)
     },
   ],
 };
+console.log(process.env.ARAGON_IPFS_KEY);
 
 // After defining the context parameters, you'll use them to instantiate the Aragon SDK context
 export const AragonSDKContext: Context = new Context(aragonSDKContextParams);
