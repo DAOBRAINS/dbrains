@@ -2,7 +2,7 @@
 
 import { Metadata } from "next";
 
-import ProjectModal from "../components/projectModalSDK";
+import ProjectModal from "../components/projectModal";
 
 /* export const metadata: Metadata = {
   title: "Projects Dashboard | DBrains",

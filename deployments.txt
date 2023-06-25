@@ -1,3 +1,8 @@
+25/06/23 test use-aragon seems to work for dao creation still:
+"daoAddress": "0x6b7CcCc1FE9A48c466e4D27189fC20B8Ec6c1E82",
+"daoTxHash": "0x8f06e1fa5cd66a3df2f2b603526d30d0f20ae3a2e9f80f1a21fac80fcc42b3cd"
+
+
 
 05/06/23 First DAO creation with NTToken!
 dbrainstestnttplugin.dao.eth
