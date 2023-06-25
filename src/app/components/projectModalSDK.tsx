@@ -1,5 +1,5 @@
 "use client";
-
+import { useSigner } from "wagmi";
 import { Fragment, useState, useEffect, useTransition } from "react";
 import ProjectModalInputs from "./projectModalInputs";
 import { Dialog, Transition } from "@headlessui/react";
@@ -16,6 +16,7 @@ import {
   EncodePluginInstallationProps,
   encodePluginInstallItem,
 } from "@daobox/use-aragon";
+import { Wallet } from "ethers";
 
 export interface Inputs {
   projectName: string;
@@ -29,6 +30,8 @@ export default function ProjectModal() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  //const signer = useSigner().data;
 
   const handleChangeInputs = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
