@@ -1,14 +1,9 @@
-import {
-  useFetchMembers,
-  TransferType,
-  TransferSortBy,
-  SortDirection,
-} from "@daobox/use-aragon";
+import { useFetchMembers, SortDirection } from "@daobox/use-aragon";
 
-function App() {
+export default function FetchMembers() {
   const { data, isLoading, isError } = useFetchMembers({
     // required
-    pluginAddress: "0x13c6e4f17bbe606fed867a5cd6389a504724e805",
+    pluginAddress: "0x74BebBdC74b454394A466444BC09Ab2A18666Df0",
   });
 
   if (isLoading) return <div>Loading...</div>;
@@ -16,7 +11,8 @@ function App() {
 
   return (
     <pre style={{ whiteSpace: "pre-wrap" }}>
-      {data.map((member) => (
+      if (data)
+      {data!.map((member) => (
         <div key={member}>
           <p>{member}</p>
         </div>
