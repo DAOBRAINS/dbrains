@@ -4,7 +4,7 @@ import { Fragment, useState, useEffect, useTransition } from "react";
 import ProjectModalInputs from "./projectModalInputs";
 import { Dialog, Transition } from "@headlessui/react";
 import { createDbrainsDao } from "./createDbrainsDAO";
-import { AragonSDKContext } from "../context/AragonSDK";
+
 import {
   Client,
   ContractVotingSettings,

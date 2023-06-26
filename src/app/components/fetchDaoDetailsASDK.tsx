@@ -1,23 +1,4 @@
-"use client";
-//import { Metadata } from "next";
-import FetchDao from "../components/fetchDao";
-//import FetchDaoDetailsASDK from "../components/fetchDaoDetailsASDK";
-//import FetchMembers from "../components/fetchMembers";
-
-/* export const metadata: Metadata = {
-  title: "DBrains Main DAO | DBrains",
-  description: "The Fully Collaborative Freelancing Plateforme",
-};
- */
-export default function DBrainsDashboard() {
-  return (
-    <main className="mx-5">
-      <h1 className="my-5 text-2xl">DBrains Platform&apos; s DAO</h1>
-      <FetchDao />
-    </main>
-  );
-}
-/* import { Client, DaoDetails } from "@aragon/sdk-client";
+import { Client, DaoDetails } from "@aragon/sdk-client";
 import { AragonSDKContext } from "../context/AragonSDK";
 
 const client: Client = new Client(AragonSDKContext);
@@ -38,7 +19,7 @@ async function getDetails() {
   return dao;
 }
 
-export default async function DBrainsDashboard() {
+export default async function FetDaoDetailsASDK() {
   const data = await getDetails();
   return (
     <div className="flex flex-col">
@@ -47,4 +28,4 @@ export default async function DBrainsDashboard() {
       </pre>
     </div>
   );
-} */
+}
