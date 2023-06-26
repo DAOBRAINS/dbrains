@@ -28,6 +28,7 @@ export async function createDbrainsDao(
     description: inputs.projectDesc,
     links: [],
   };
+  console.log(daoMetadata);
   /* const clientNFTSTORAGE = new NFTStorage({
     token: process.env.NFTSTORAGE_IPFS_KEY as string,
   });
