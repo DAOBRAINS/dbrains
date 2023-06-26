@@ -29,17 +29,17 @@ export async function createDbrainsDao(
     links: [],
   };
   console.log(daoMetadata);
-  /* const clientNFTSTORAGE = new NFTStorage({
+  const clientNFTSTORAGE = new NFTStorage({
     token: process.env.NFTSTORAGE_IPFS_KEY as string,
   });
   const blob = new Blob([JSON.stringify(daoMetadata, null, 2)], {
     type: "application/json",
   });
   const metadataUri = await clientNFTSTORAGE.storeBlob(blob);
-  console.log("metadataUri (createDbrainsDAO):", metadataUri); */
+  console.log("metadataUri (createDbrainsDAO):", metadataUri);
 
   // Through pinning the metadata in IPFS, we can get the IPFS URI. You can read more about it here: https://docs.ipfs.tech/how-to/pin-files/
-  const metadataUri = await client.methods.pinMetadata(daoMetadata);
+  //const metadataUri = await client.methods.pinMetadata(daoMetadata);
 
   const createDaoParams: CreateDaoParams = {
     metadataUri,
