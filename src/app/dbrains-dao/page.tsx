@@ -1,6 +1,6 @@
-"use client";
+//"use client";
 //import { Metadata } from "next";
-import FetchDao from "../components/fetchDao";
+//import FetchDao from "../components/fetchDao";
 //import FetchDaoDetailsASDK from "../components/fetchDaoDetailsASDK";
 //import FetchMembers from "../components/fetchMembers";
 
@@ -9,21 +9,21 @@ import FetchDao from "../components/fetchDao";
   description: "The Fully Collaborative Freelancing Plateforme",
 };
  */
-export default function DBrainsDashboard() {
+/* export default function DBrainsDashboard() {
   return (
     <main className="mx-5">
       <h1 className="my-5 text-2xl">DBrains Platform&apos; s DAO</h1>
       <FetchDao />
     </main>
   );
-}
-/* import { Client, DaoDetails } from "@aragon/sdk-client";
+} */
+import { Client, DaoDetails } from "@aragon/sdk-client";
 import { AragonSDKContext } from "../context/AragonSDK";
 
 const client: Client = new Client(AragonSDKContext);
 
 // Address or ENS of the DAO whose metadata you want to retrieve.
-const daoAddressOrEns: string = "0xD30E4c57faA705cd190D24fFb6183D19Af338806"; // test.dao.eth
+const daoAddressOrEns: string = "0x7a20D7FCE7d486c9cbe9da64BEbc1039E78c54ab"; // test.dao.eth
 
 async function getDetails() {
   // Get a DAO's details.
@@ -47,4 +47,4 @@ export default async function DBrainsDashboard() {
       </pre>
     </div>
   );
-} */
+}
