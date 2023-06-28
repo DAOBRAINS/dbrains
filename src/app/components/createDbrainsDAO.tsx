@@ -26,20 +26,26 @@ export async function createDbrainsDao(
   const daoMetadata: DaoMetadata = {
     name: inputs.projectName,
     description: inputs.projectDesc,
-    links: [],
+    links: [
+      {
+        name: "dbrains website",
+        url: "https://dbrains.vercel.app/",
+      },
+    ],
   };
   console.log(daoMetadata);
-  const clientNFTSTORAGE = new NFTStorage({
+  /* const clientNFTSTORAGE = new NFTStorage({
     token: process.env.NFTSTORAGE_IPFS_KEY as string,
   });
   const blob = new Blob([JSON.stringify(daoMetadata, null, 2)], {
     type: "application/json",
   });
   const metadataUri = await clientNFTSTORAGE.storeBlob(blob);
-  console.log("metadataUri (createDbrainsDAO):", metadataUri);
+  console.log("metadataUri (createDbrainsDAO):", metadataUri); */
 
   // Through pinning the metadata in IPFS, we can get the IPFS URI. You can read more about it here: https://docs.ipfs.tech/how-to/pin-files/
-  //const metadataUri = await client.methods.pinMetadata(daoMetadata);
+
+  const metadataUri = await client.methods.pinMetadata(daoMetadata);
 
   const createDaoParams: CreateDaoParams = {
     metadataUri,
@@ -48,10 +54,10 @@ export async function createDbrainsDao(
   };
 
   // Estimate how much gas the transaction will cost.
-  /* const estimatedGas: GasFeeEstimation = await client.estimation.createDao(
+  const estimatedGas: GasFeeEstimation = await client.estimation.createDao(
     createDaoParams
   );
-  console.log({ avg: estimatedGas.average, maximum: estimatedGas.max }); */
+  console.log({ avg: estimatedGas.average, maximum: estimatedGas.max });
 
   // Create the DAO.
   const steps = client.methods.createDao(createDaoParams);
