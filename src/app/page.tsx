@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Slogans from "./components/slogans";
 
 export const metadata = {

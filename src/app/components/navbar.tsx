@@ -49,7 +49,7 @@ export default function NavBar() {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <a
+                      <Link
                         key={item.name}
                         href={item.href}
                         className={classNames(
@@ -61,9 +61,20 @@ export default function NavBar() {
                         aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
+                </div>
+                <div className="p-5">
+                  <Link href="https://discord.gg/d6j4qNP6ph">
+                    <Image
+                      //className=" h-10 w-auto "
+                      src="/discord-mark-white.png"
+                      width={35}
+                      height={35}
+                      alt="DBrains Discord"
+                    />
+                  </Link>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
