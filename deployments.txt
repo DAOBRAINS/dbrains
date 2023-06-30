@@ -1,3 +1,20 @@
+30/06/23 creation DAO test removing use-aragon with latest sdk (1.5.0 javascript-common ?)
+{
+  name: 'daotestasdk2',
+  description: 'test 2 without use-aragon',
+  links: [ { name: 'dbrains website', url: 'https://dbrains.vercel.app/' } ]
+}
+metadataUri (createDbrainsDAO): bafkreih5heorqw3x3dtbsyr7uqlg7u2soyjazrgoxh6r4yb4oub5jtg4hq
+{
+  txHash: '0x01e22dbd669c49981099f61b91e840e64551522b0a3fa4803ca0267b4f06f49b'
+}
+{
+  daoAddress: '0xE98364318C7138253edb0d070334eaDf99a61A51',
+  pluginAddresses: [ '0x8Ee3E6E09047900aeA440cD032344Ef337C753b8' ]
+}
+
+
+
 25/06/23 test use-aragon seems to work for dao creation still:
 "daoAddress": "0x6b7CcCc1FE9A48c466e4D27189fC20B8Ec6c1E82",
 "daoTxHash": "0x8f06e1fa5cd66a3df2f2b603526d30d0f20ae3a2e9f80f1a21fac80fcc42b3cd"

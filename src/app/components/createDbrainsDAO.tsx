@@ -5,7 +5,7 @@ import {
   CreateDaoParams,
   DaoCreationSteps,
   DaoMetadata,
-  GasFeeEstimation,
+  //GasFeeEstimation,
 } from "@aragon/sdk-client";
 
 import { IPluginInstallItem } from "@daobox/use-aragon";
@@ -43,8 +43,6 @@ export async function createDbrainsDao(
   const metadataUri = await clientNFTSTORAGE.storeBlob(blob);
   console.log("metadataUri (createDbrainsDAO):", metadataUri); */
 
-  // Through pinning the metadata in IPFS, we can get the IPFS URI. You can read more about it here: https://docs.ipfs.tech/how-to/pin-files/
-
   const metadataUri = await client.methods.pinMetadata(daoMetadata);
 
   const createDaoParams: CreateDaoParams = {
@@ -54,10 +52,10 @@ export async function createDbrainsDao(
   };
 
   // Estimate how much gas the transaction will cost.
-  const estimatedGas: GasFeeEstimation = await client.estimation.createDao(
+  /* const estimatedGas: GasFeeEstimation = await client.estimation.createDao(
     createDaoParams
   );
-  console.log({ avg: estimatedGas.average, maximum: estimatedGas.max });
+  console.log({ avg: estimatedGas.average, maximum: estimatedGas.max }); */
 
   // Create the DAO.
   const steps = client.methods.createDao(createDaoParams);

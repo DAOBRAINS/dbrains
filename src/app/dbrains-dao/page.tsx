@@ -30,10 +30,10 @@ async function getDetails() {
   const dao: DaoDetails | null = await client.methods.getDao(daoAddressOrEns);
 
   // Recommendation: handle errors
-  if (!dao) {
+  /* if (!dao) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch dao details");
-  }
+  } */
   console.log(dao);
   return dao;
 }

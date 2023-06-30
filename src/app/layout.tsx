@@ -10,7 +10,7 @@ import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 //import { AragonSDKWrapper } from "./context/AragonSDK";
 import { useIsMounted } from "./hooks/useIsMounted";
-import { AragonProvider } from "@daobox/use-aragon";
+//import { AragonProvider } from "@daobox/use-aragon";
 import AppShell from "./components/appShell";
 
 export default function RootLayout({
@@ -55,9 +55,9 @@ export default function RootLayout({
             {/* {isMounted && (
               <AragonSDKWrapper> */}
             {isMounted && (
-              <AragonProvider>
-                <AppShell>{children}</AppShell>
-              </AragonProvider>
+              // <AragonProvider>
+              <AppShell>{children}</AppShell>
+              // </AragonProvider>
             )}
             {/*   </AragonSDKWrapper>
             )} */}
