@@ -12,6 +12,7 @@ import { IPluginInstallItem } from "@daobox/use-aragon";
 import { Inputs } from "./projectModalSDK";
 import { NFTStorage } from "nft.storage";
 import { AragonSDKContext } from "../context/AragonSDK";
+import { packToBlob } from "ipfs-car/pack/blob";
 import { Wallet } from "ethers";
 
 export async function createDbrainsDao(
@@ -34,16 +35,30 @@ export async function createDbrainsDao(
     ],
   };
   console.log(daoMetadata);
-  /* const clientNFTSTORAGE = new NFTStorage({
+  const clientNFTSTORAGE = new NFTStorage({
     token: process.env.NFTSTORAGE_IPFS_KEY as string,
   });
   const blob = new Blob([JSON.stringify(daoMetadata, null, 2)], {
     type: "application/json",
   });
-  const metadataUri = await clientNFTSTORAGE.storeBlob(blob);
-  console.log("metadataUri (createDbrainsDAO):", metadataUri); */
 
-  const metadataUri = await client.methods.pinMetadata(daoMetadata);
+  /* const { root, car } = await packToBlob({
+    input: blob,
+    rawLeaves: false,
+    wrapWithDirectory: false,
+  });
+  await clientNFTSTORAGE.storeCar(car);
+
+  // downgrade the CID to v0
+  const metadataUri = root.toV0().toString();
+  console.log({ cid: metadataUri });
+  // { cid: 'QmcLaoGJd1rAF1i7Q5Q4YknSuoC6eyFRFBaNXVRyANn1tA' } */
+
+  const metadataCid = await clientNFTSTORAGE.storeBlob(blob);
+  const metadataUri = "ipfs://" + metadataCid;
+  console.log("metadataUri (createDbrainsDAO):", metadataUri);
+
+  //const metadataUri = await client.methods.pinMetadata(daoMetadata);
 
   const createDaoParams: CreateDaoParams = {
     metadataUri,

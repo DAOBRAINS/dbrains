@@ -19,11 +19,12 @@
 } */
 import { Client, DaoDetails } from "@aragon/sdk-client";
 import { AragonSDKContext } from "../context/AragonSDK";
+import { TokenVotingClient, TokenVotingMember } from "@aragon/sdk-client";
 
 const client: Client = new Client(AragonSDKContext);
 
 // Address or ENS of the DAO whose metadata you want to retrieve.
-const daoAddressOrEns: string = "0x7a20D7FCE7d486c9cbe9da64BEbc1039E78c54ab"; // test.dao.eth
+const daoAddressOrEns: string = "0x5226d5316b131827325f6cf8ba65e1b246813a49";
 
 async function getDetails() {
   // Get a DAO's details.
@@ -38,12 +39,36 @@ async function getDetails() {
   return dao;
 }
 
+async function getMembers() {
+  // Create a TokenVoting client
+  const tokenVotingClient: TokenVotingClient = new TokenVotingClient(
+    AragonSDKContext
+  );
+
+  const pluginAddress: string = "0xe9409c6a6bff5fb83ea389e3688fc45491137e99"; //  The address of the plugin that DAO has installed. You can find this by calling `getDao(daoAddress)` and getting the DAO details .
+
+  const members: TokenVotingMember[] =
+    await tokenVotingClient.methods.getMembers(pluginAddress);
+  console.log(members);
+  return members;
+}
+
 export default async function DBrainsDashboard() {
   const data = await getDetails();
+  const members = await getMembers();
   return (
     <div className="flex flex-col">
       <pre style={{ whiteSpace: "pre-wrap" }}>
         {JSON.stringify(data, null, 2)}
+      </pre>
+      <pre className="p-5">
+        DBrains Community Members:
+        {members &&
+          members!.map((member) => (
+            <div>
+              <p key={member.address}>{member.address}</p>
+            </div>
+          ))}
       </pre>
     </div>
   );

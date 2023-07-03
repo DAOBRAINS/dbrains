@@ -14,13 +14,13 @@ let aragonSDKContextParams: ContextParams = {
   ], //["https://rpc.ankr.com/eth_goerli"], // feel free to use the provider of your choosing: Alchemy, Infura, etc.
   /* ipfsNodes: [
     {
-      url: "https://testing-ipfs-0.aragon.network/api/v0", //"https://ipfs.infura.io:5001",
+      url: "https://nftstorage.link/ipfs/", //"https://testing-ipfs-0.aragon.network/api/v0", //"https://ipfs.infura.io:5001",
       headers: {
-        "X-API-KEY": process.env.ARAGON_IPFS_KEY || "",
+        "X-API-KEY": process.env.NFTSTORAGE_IPFS_KEY || "", //process.env.ARAGON_IPFS_KEY || "",
       }, // make sure you have the key for your IPFS node within your .env file
     },
-  ],
-  graphqlNodes: [
+  ], */
+  /* graphqlNodes: [
     {
       url: "https://subgraph.satsuma-prod.com/qHR2wGfc5RLi6/aragon/osx-mumbai/api", //?? // this will change based on the chain you're using (osx-mainnet alternatively)
     },

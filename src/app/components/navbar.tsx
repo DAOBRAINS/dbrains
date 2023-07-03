@@ -40,7 +40,7 @@ export default function NavBar() {
                   <h1 className="p-2 text-white text-2xl">DBrains</h1>
                   <Image
                     className=" block h-10 w-auto rounded-full "
-                    src="/DBrains.jpg"
+                    src="/dbrains-fire.png"
                     width={20}
                     height={20}
                     alt="DBrains"
