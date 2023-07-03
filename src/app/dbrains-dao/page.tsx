@@ -65,8 +65,8 @@ export default async function DBrainsDashboard() {
         DBrains Community Members:
         {members &&
           members!.map((member) => (
-            <div>
-              <p key={member.address}>{member.address}</p>
+            <div key={member.address}>
+              <p>{member.address}</p>
             </div>
           ))}
       </pre>
