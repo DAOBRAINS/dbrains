@@ -7,7 +7,7 @@ import { Wallet } from "ethers";
 //create context not to be provided in global state:
 let aragonSDKContextParams: ContextParams = {
   network: "maticmum", // mainnet, mumbai, etc
-  signer: new Wallet(process.env.PRIVATE_KEY as string), //signer: Wallet.createRandom(),
+  signer: Wallet.createRandom(), // new Wallet(process.env.PRIVATE_KEY as string), //signer: Wallet.createRandom(),
   //daoFactoryAddress: "0x3ff1681f31f68Ff2723d25Cf839bA7500FE5d218", //"0x16B6c6674fEf5d29C9a49EA68A19944f5a8471D3", // the DAO Factory contract address from the Goerli network. You can find the daoFactoryAddress you need from the active_contracts file within the osx repository here: https://github.com/aragon/osx/blob/develop/active_contracts.json
   web3Providers: [
     `https://polygon-mumbai.g.alchemy.com/v2/${process.env.ALCHEMY_MUMBAI_KEY}`,
