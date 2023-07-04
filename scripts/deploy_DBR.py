@@ -1,5 +1,5 @@
 
-from brownie import DBRAINSNTT, accounts, network
+""" from brownie import DBRAINSNTT, accounts, network
 from dotenv import load_dotenv
 import os
 
@@ -16,7 +16,7 @@ def main():
     dbrtoken = DBRAINSNTT.deploy({"from": accounts[0]})
     print("DBR token deployed at ", dbrtoken)
 
-    #brownie run deploy_DBR.py --network polygon-mumbai
+    #brownie run deploy_DBR.py --network polygon-mumbai """
 
 """ (base) bruno@gram:~/Documents/DBRAINS/dbrains$ brownie run deploy_DBR.py --network polygon-mumbai
 Brownie v1.19.1 - Python development framework for Ethereum
