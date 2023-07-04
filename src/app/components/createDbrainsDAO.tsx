@@ -19,9 +19,9 @@ export async function createDbrainsDao(
   inputs: Inputs,
   plugin: IPluginInstallItem
 ) {
-  /*  AragonSDKContext.set({
+  AragonSDKContext.set({
     signer: new Wallet(process.env.PRIVATE_KEY as string),
-  }); */
+  });
 
   const client: Client = new Client(AragonSDKContext);
   const daoMetadata: DaoMetadata = {
