@@ -24,7 +24,7 @@ import { TokenVotingClient, TokenVotingMember } from "@aragon/sdk-client";
 const client: Client = new Client(AragonSDKContext);
 
 // Address or ENS of the DAO whose metadata you want to retrieve.
-const daoAddressOrEns: string = "0x5226d5316b131827325f6cf8ba65e1b246813a49";
+const daoAddressOrEns: string = "0xcbd0eff3ec61d7ce27121622da2eb08460654c86";
 
 async function getDetails() {
   // Get a DAO's details.
@@ -45,7 +45,7 @@ async function getMembers() {
     AragonSDKContext
   );
 
-  const pluginAddress: string = "0xe9409c6a6bff5fb83ea389e3688fc45491137e99"; //  The address of the plugin that DAO has installed. You can find this by calling `getDao(daoAddress)` and getting the DAO details .
+  const pluginAddress: string = "0xa96cdaa7cc1d6207b6c404cb4e7bd1241788fac6"; //  The address of the plugin that DAO has installed. You can find this by calling `getDao(daoAddress)` and getting the DAO details .
 
   const members: TokenVotingMember[] =
     await tokenVotingClient.methods.getMembers(pluginAddress);
