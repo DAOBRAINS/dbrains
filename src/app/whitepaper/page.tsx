@@ -127,16 +127,16 @@ export default function Whitepaper() {
             generate money, contributors will receive dividends depending on
             their earned DBRs. The DAO can decide to open to investors, who can
             purchase DBRs in exchange of currencies at a rate determined by the
-            DAO. The currencies are deposited into the DAO treasury which can
-            decide to use it for different purposes. Investors are then part of
-            the DAO like others contributors owners of DBRs. DAO members can use
-            the treasury for hiring external services or for providing
-            remuneration to the members, who can decide to burn some of their
-            DBRs in exchange of some payments in available currencies. This
-            system will avoid speculation typical to web3 project and reward
-            contributors fairly. Thus the platform will self developed without
-            the need for initial investment. Projects developed through the
-            platform can be similarly associated with NTT tokens and
+            DAO. The currencies are deposited into the DAO treasury. The DAO can
+            decide to use the treasury for different purposes. Investors are
+            then part of the DAO like others contributors owners of DBRs. DAO
+            members can use the treasury for hiring external services or for
+            providing remuneration to the members, who can decide to burn some
+            of their DBRs in exchange of some payments in available currencies.
+            This system will avoid speculation typical to web3 project and
+            reward contributors fairly. Thus the platform will self developed
+            without the need for initial investment. Projects developed through
+            the platform can be similarly associated with NTT tokens and
             funding/remuneration managed along the same lines. But Projects
             launchers are free to decide the type of tokenomics they want for
             their project. Projects launchers will pay some fee to the DBrains
